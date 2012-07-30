@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-"""ColourAllMC2 %(__version__)s
-=======
-"""ColourAllMC1 %(__version__)s
->>>>>>> mergetool_test_1
+"""ColourAll %(__version__)s
 
 ORIGINAL AUTHOR: Barry Warsaw <barry@python.org>
 
@@ -413,13 +409,13 @@ from Tkinter import Tk,Text,Scrollbar
 from Tkconstants import *
 import tkMessageBox
 
-
+
 PROGRAM = sys.argv[0]
 AUTHNAME = ''
 AUTHEMAIL = ''
 
 
-
+
 # Do this because ColourAllWidget.py wants to get at the interpolated docstring
 # too, for its Help menu.
 def docstring():
@@ -451,7 +447,7 @@ def version():
     app._ColourAllWidget__popup_about()
     app._ColourAllWidget__tkroot.mainloop()
     sys.exit(0)
-
+
 def initial_colour(s, colourdb):
     # function called on every colour
     def scan_colour(s, colourdb=colourdb):
@@ -479,7 +475,7 @@ def initial_colour(s, colourdb):
     return r, g, b
 
 
-#from ColourAllWidget import get_colourdb
+#from ColourAllWidget import get_colourdb
 
 def build(master=None, initialcolour="#808080", initfile=None, ignore=None,
           dbfile=None):
@@ -511,7 +507,6 @@ def run(app, s):
         pass
 
 
-
 def main():
     global app,sb
     try:

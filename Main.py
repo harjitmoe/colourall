@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 """ColourAllMC2 %(__version__)s
+=======
+"""ColourAllMC1 %(__version__)s
+>>>>>>> mergetool_test_1
 
 ORIGINAL AUTHOR: Barry Warsaw <barry@python.org>
 

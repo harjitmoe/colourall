@@ -68,7 +68,10 @@ class Switchboard:
             "UPWHILEDRAG":1,
 	})
 	if os.path.exists(config):
-		self.__optiondb.update(pickle.load(open(config,"rU")))
+		try:
+			self.__optiondb.update(pickle.load(open(config,"rU")))
+		except:
+			print "Option DB Loading failed"
         self.__optiondb.update({
             #...and these are required due to the non-X palette
             'TEXTBG':"white",

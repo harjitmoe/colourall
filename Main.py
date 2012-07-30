@@ -388,7 +388,7 @@ http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colours?action=history
 
 
 
-__version__ = '1.0'
+__version__ = '1.1 alpha1'
 
 __doc__=__doc__%globals()
 import sys

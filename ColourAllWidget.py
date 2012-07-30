@@ -1,4 +1,4 @@
-"""Main ColourAll (Pythonically Natural Color and Hue Editor) widget.
+"""Main ColourAll (Pythonically Natural Colour and Hue Editor) widget.
 
 This window provides the basic decorations, primarily including the menubar.
 It is used to bring up other windows.
@@ -9,14 +9,14 @@ import os
 from Tkinter import *
 import tkMessageBox
 import tkFileDialog
-import ColorDB,StringIO
+import ColourDB,StringIO
 
 # Milliseconds between interrupt checks
 KEEPALIVE_TIMER = 500
 
-def get_colordb(filetype=None):
+def get_colourdb(filetype=None):
     import ColourStores
-    return ColourStores.unicolor
+    return ColourStores.unicolour
 
 class ColourAllWidget:
     def __init__(self, version, switchboard, master=None, extrapath=[]):
@@ -127,7 +127,7 @@ class ColourAllWidget:
         self.__intern_pal()
 
     def __intern_pal(self, event=None):
-        self.__sb.set_colordb(get_colordb())
+        self.__sb.set_colourdb(get_colourdb())
 
     def __quit(self, event=None):
         self.__tkroot.quit()
@@ -169,7 +169,7 @@ class ColourAllWidget:
 
     def __load(self, event=None):
         while 1:
-            idir, ifile = os.path.split(self.__sb.colordb().filename())
+            idir, ifile = os.path.split(self.__sb.colourdb().filename())
             file = tkFileDialog.askopenfilename(
                 filetypes=[('Text files', '*.txt'),
                            ('All files', '*'),
@@ -180,19 +180,19 @@ class ColourAllWidget:
                 # cancel button
                 return
             try:
-                colordb = ColorDB.get_colordb(file)
+                colourdb = ColourDB.get_colourdb(file)
             except IOError:
                 tkMessageBox.showerror('Read error', '''\
 Could not open file for reading:
 %s''' % file)
                 continue
-            if colordb is None:
-                tkMessageBox.showerror('Unrecognized color file type', '''\
-Unrecognized color file type in file:
+            if colourdb is None:
+                tkMessageBox.showerror('Unrecognized colour file type', '''\
+Unrecognized colour file type in file:
 %s''' % file)
                 continue
             break
-        self.__sb.set_colordb(colordb)
+        self.__sb.set_colourdb(colourdb)
 
     def withdraw(self):
         self.__root.withdraw()

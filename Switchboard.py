@@ -4,9 +4,9 @@ This class is used to coordinate updates among all Viewers.  Every Viewer must
 conform to the following interface:
 
     - it must include a method called update_yourself() which takes three
-      arguments; the red, green, and blue values of the selected color.
+      arguments; the red, green, and blue values of the selected colour.
 
-    - When a Viewer selects a color and wishes to update all other Views, it
+    - When a Viewer selects a colour and wishes to update all other Views, it
       should call update_views() on the Switchboard object.  Note that the
       Viewer typically does *not* update itself before calling update_views(),
       since this would cause it to get updated twice.
@@ -22,8 +22,8 @@ Optionally, Viewers can also implement:
     - withdraw() which takes no arguments.  This is called when ColourAll is
       unmapped.  All Viewers should implement this.
 
-    - colordb_changed() which takes a single argument, an instance of
-      ColorDB.  This is called whenever the color name database is changed and
+    - colourdb_changed() which takes a single argument, an instance of
+      ColourDB.  This is called whenever the colour name database is changed and
       gives a chance for the Viewers to do something on those events.  See
       ListViewer for details.
 
@@ -50,7 +50,7 @@ import marshal
 class Switchboard:
     def __init__(self, initfile):
         self.__initfile = initfile
-        self.__colordb = None
+        self.__colourdb = None
         self.__optiondb = {}
         self.__views = []
         self.__red = 0
@@ -89,14 +89,14 @@ class Switchboard:
     def current_rgb(self):
         return self.__red, self.__green, self.__blue
 
-    def colordb(self):
-        return self.__colordb
+    def colourdb(self):
+        return self.__colourdb
 
-    def set_colordb(self, colordb):
-        self.__colordb = colordb
+    def set_colourdb(self, colourdb):
+        self.__colourdb = colourdb
         for v in self.__views:
-            if hasattr(v, 'colordb_changed'):
-                v.colordb_changed(colordb)
+            if hasattr(v, 'colourdb_changed'):
+                v.colourdb_changed(colourdb)
         self.update_views_current()
 
     def optiondb(self):

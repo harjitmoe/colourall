@@ -1,15 +1,15 @@
 """DetailsViewer class.
 
 This class implements a pure input window which allows you to meticulously
-edit the current color.  You have both mouse control of the color (via the
+edit the current colour.  You have both mouse control of the colour (via the
 buttons along the bottom row), and there are keyboard bindings for each of the
 increment/decrement buttons.
 
-The top three check buttons allow you to specify which of the three color
+The top three check buttons allow you to specify which of the three colour
 variations are tied together when incrementing and decrementing.  Red, green,
 and blue are self evident.  By tying together red and green, you can modify
-the yellow level of the color.  By tying together red and blue, you can modify
-the magenta level of the color.  By tying together green and blue, you can
+the yellow level of the colour.  By tying together red and blue, you can modify
+the magenta level of the colour.  By tying together green and blue, you can
 modify the cyan level, and by tying all three together, you can modify the
 grey level.
 
@@ -84,7 +84,7 @@ class DetailsViewer:
         root.bind('<Shift-KeyPress-Left>', self.__minus25)
         root.bind('<Shift-KeyPress-Right>', self.__plus25)
         #
-        # color ties
+        # colour ties
         frame = self.__frame = Frame(root)
         frame.pack(expand=YES, fill=X)
         self.__l1 = Label(frame, text='Move Sliders:')
@@ -222,7 +222,7 @@ class DetailsViewer:
             if blue > 255:
                blue = blue - 256
         elif atbound == RATIO:
-            # for when 2 or 3 colors are tied together
+            # for when 2 or 3 colours are tied together
             dir = 0
             for c in tie:
                 if c < 0:

@@ -1,22 +1,22 @@
-"""Color Database.
+"""Colour Database.
 
-This file contains one class, called ColorDB, and several utility functions.
-The class must be instantiated by the get_colordb() function in this file,
+This file contains one class, called ColourDB, and several utility functions.
+The class must be instantiated by the get_colourdb() function in this file,
 passing it a filename to read a database out of.
 
-The get_colordb() function will try to examine the file to figure out what the
+The get_colourdb() function will try to examine the file to figure out what the
 format of the file is.  If it can't figure out the file format, or it has
-trouble reading the file, None is returned.  You can pass get_colordb() an
+trouble reading the file, None is returned.  You can pass get_colourdb() an
 optional filetype argument.
 
 Supporte file types are:
 
     X_RGB_TXT -- X Consortium rgb.txt format files.  Three columns of numbers
                  from 0 .. 255 separated by whitespace.  Arbitrary trailing
-                 columns used as the color name.
+                 columns used as the colour name.
 
 The utility functions are useful for converting between the various expected
-color formats, and for calculating other color values.
+colour formats, and for calculating other colour values.
 
 """
 
@@ -25,7 +25,7 @@ import re
 from types import *
 import operator
 
-class BadColor(Exception):
+class BadColour(Exception):
     pass
 
 DEFAULT_DB = None
@@ -35,11 +35,11 @@ COMMASPACE = ', '
 
 
 # generic class
-class ColorDB:
+class ColourDB:
     def __init__(self, fp):
         lineno = 2
         self.__name = fp.name
-        # Maintain several dictionaries for indexing into the color database.
+        # Maintain several dictionaries for indexing into the colour database.
         # Note that while Tk supports RGB intensities of 4, 8, 12, or 16 bits,
         # for now we only support 8 bit intensities.  At least on OpenWindows,
         # all intensities in the /usr/openwin/lib/rgb.txt file are 8-bit
@@ -64,7 +64,7 @@ class ColorDB:
             red, green, blue = self._extractrgb(mo)
             name = self._extractname(mo)
             keyname = name.lower()
-            # BAW: for now the `name' is just the last named color with the
+            # BAW: for now the `name' is just the last named colour with the
             # rgb values we find.  Later, we might want to make the two word
             # version the `name', or the CapitalizedVersion, etc.
             key = (red, green, blue)
@@ -91,7 +91,7 @@ class ColorDB:
         try:
             return self.__byrgb[rgbtuple]
         except KeyError:
-            raise BadColor(rgbtuple)
+            raise BadColour(rgbtuple)
 
     def find_byname(self, name):
         """Return (red, green, blue) for name"""
@@ -101,10 +101,10 @@ class ColorDB:
         except KeyError:
             if name=="grey":
                 return self.find_byname("gray")
-            raise BadColor(name)
+            raise BadColour(name)
 
     def nearest(self, red, green, blue):
-        """Return the name of color nearest (red, green, blue)"""
+        """Return the name of colour nearest (red, green, blue)"""
         # BAW: should we use Voronoi diagrams, Delaunay triangulation, or
         # octree for speeding up the locating of nearest point?  Exhaustive
         # search is inefficient, but seems fast enough.
@@ -122,7 +122,7 @@ class ColorDB:
         return nearest_name
 
     def nearests(self, red, green, blue):
-        """Return the names of colors equidistantly nearest (red, green, blue)"""
+        """Return the names of colours equidistantly nearest (red, green, blue)"""
         # BAW: should we use Voronoi diagrams, Delaunay triangulation, or
         # octree for speeding up the locating of nearest point?  Exhaustive
         # search is inefficient, but seems fast enough.
@@ -146,7 +146,7 @@ class ColorDB:
     def unique_names(self,mode="alphabet"):
         # sorted
         if not self.__allnames:
-            self.__allnames=BadColor()
+            self.__allnames=BadColour()
         if not hasattr(self.__allnames,mode):
             self.__allnames.__dict__["mode"] = []
             for name, aliases in self.__byrgb.values():
@@ -205,7 +205,7 @@ class ColorDB:
         try:
             name, aliases = self.__byrgb[(red, green, blue)]
         except KeyError:
-            raise BadColor((red, green, blue))
+            raise BadColour((red, green, blue))
         return [name] + aliases
 
 
@@ -228,11 +228,11 @@ def cmp_to_key(cmper):
             return cmper(a.o, b.o) != 0
     return keyer
 
-class RGBToNameColorDB(ColorDB):
+class RGBToNameColourDB(ColourDB):
     _re = re.compile(
         '\s*(?P<red>\d+)\s+(?P<green>\d+)\s+(?P<blue>\d+)\s+(?P<name>.*)')
 
-class NameToHexDB(ColorDB):
+class NameToHexDB(ColourDB):
     _re = re.compile('(?P<name>(.+))\s+(?P<hexrgb>#[0-9a-fA-F]{6})')
 
     def _extractrgb(self, mo):
@@ -247,7 +247,7 @@ class HexToNameDB(NameToHexDB):
 class CrayolaDB(NameToHexDB):
     _re = re.compile('[0123456789]+\s+(?P<name>(.+?))\s+(?P<hexrgb>#[0-9a-fA-F]{6})')
 
-class NamelessHexDB(ColorDB):
+class NamelessHexDB(ColourDB):
     _re = re.compile('(?P<hexrgb>#[0-9a-fA-F]{6})')
 
     def _extractrgb(self, mo):
@@ -262,9 +262,9 @@ class NamelessHexDB(ColorDB):
 # expression and CLASS is the class to instantiate if a match is found
 
 FILETYPES = [
-    (re.compile('Xorg'),                             RGBToNameColorDB),
-    (re.compile('XConsortium'),                      RGBToNameColorDB),
-    (re.compile('X11[- ]?[sS]tyle'),                 RGBToNameColorDB),
+    (re.compile('Xorg'),                             RGBToNameColourDB),
+    (re.compile('XConsortium'),                      RGBToNameColourDB),
+    (re.compile('X11[- ]?[sS]tyle'),                 RGBToNameColourDB),
     (re.compile('HTML'),                             NameToHexDB),
     (re.compile('lightlink'),                        NameToHexDB),
     (re.compile('[nN]ame[- ]?[tT]o[- ]?[hH]ex'),     NameToHexDB),
@@ -274,18 +274,18 @@ FILETYPES = [
     (re.compile('[cC]rayola'),                       CrayolaDB),
     ]
 
-def get_colordb(file, filetype=None):
+def get_colourdb(file, filetype=None):
     fp = open(file)
-    return _get_colordb(fp, filetype)
+    return _get_colourdb(fp, filetype)
 
-def get_colordb_string(name, file, filetype=None):
+def get_colourdb_string(name, file, filetype=None):
     import StringIO
     fp = StringIO.StringIO(file)
     fp.name="palettes/<"+name+">"
-    return _get_colordb(fp, filetype)
+    return _get_colourdb(fp, filetype)
 
-def _get_colordb(fp, filetype):
-    colordb = None
+def _get_colourdb(fp, filetype):
+    colourdb = None
     try:
         line = fp.readline()
         if not line:
@@ -303,29 +303,29 @@ def _get_colordb(fp, filetype):
             # no matching type
             return None
         # we know the type and the class to grok the type, so suck it in
-        colordb = class_(fp)
+        colourdb = class_(fp)
     finally:
         fp.close()
     # save a global copy
     global DEFAULT_DB
-    DEFAULT_DB = colordb
-    return colordb
+    DEFAULT_DB = colourdb
+    return colourdb
 
 
 
 _namedict = {}
 
-def rrggbb_to_triplet(color):
-    """Converts a #rrggbb color to the tuple (red, green, blue)."""
-    rgbtuple = _namedict.get(color)
+def rrggbb_to_triplet(colour):
+    """Converts a #rrggbb colour to the tuple (red, green, blue)."""
+    rgbtuple = _namedict.get(colour)
     if rgbtuple is None:
-        if color[0] != '#':
-            raise BadColor(color)
-        red = color[1:3]
-        green = color[3:5]
-        blue = color[5:7]
+        if colour[0] != '#':
+            raise BadColour(colour)
+        red = colour[1:3]
+        green = colour[3:5]
+        blue = colour[5:7]
         rgbtuple = int(red, 16), int(green, 16), int(blue, 16)
-        _namedict[color] = rgbtuple
+        _namedict[colour] = rgbtuple
     return rgbtuple
 
 
@@ -356,15 +356,15 @@ def triplet_to_brightness(rgbtuple):
 
 
 if __name__ == '__main__':
-    colordb = get_colordb('/usr/openwin/lib/rgb.txt')
-    if not colordb:
-        print 'No parseable color database found'
+    colourdb = get_colourdb('/usr/openwin/lib/rgb.txt')
+    if not colourdb:
+        print 'No parseable colour database found'
         sys.exit(1)
-    # on my system, this color matches exactly
+    # on my system, this colour matches exactly
     target = 'navy'
-    red, green, blue = rgbtuple = colordb.find_byname(target)
+    red, green, blue = rgbtuple = colourdb.find_byname(target)
     print target, ':', red, green, blue, triplet_to_rrggbb(rgbtuple)
-    name, aliases = colordb.find_byrgb(rgbtuple)
+    name, aliases = colourdb.find_byrgb(rgbtuple)
     print 'name:', name, 'aliases:', COMMASPACE.join(aliases)
     r, g, b = (1, 1, 128)                         # nearest to navy
     r, g, b = (145, 238, 144)                     # nearest to lightgreen
@@ -372,12 +372,12 @@ if __name__ == '__main__':
     print 'finding nearest to', target, '...'
     import time
     t0 = time.time()
-    nearest = colordb.nearest(r, g, b)
+    nearest = colourdb.nearest(r, g, b)
     t1 = time.time()
-    print 'found nearest color', nearest, 'in', t1-t0, 'seconds'
+    print 'found nearest colour', nearest, 'in', t1-t0, 'seconds'
     # dump the database
-    for n in colordb.unique_names():
-        r, g, b = colordb.find_byname(n)
-        aliases = colordb.aliases_of(r, g, b)
+    for n in colourdb.unique_names():
+        r, g, b = colourdb.find_byname(n)
+        aliases = colourdb.aliases_of(r, g, b)
         print '%20s: (%3d/%3d/%3d) == %s' % (n, r, g, b,
                                              SPACE.join(aliases[1:]))

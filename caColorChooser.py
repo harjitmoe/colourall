@@ -6,7 +6,7 @@ and everything else "colour" (UK) is preferred.
 
 import os
 import Main
-import ColorDB
+import ColourDB
 
 
 
@@ -32,7 +32,7 @@ class Chooser:
         # load the database file
         colourdb = None
         if dbfile <> self.__databasefile:
-            colourdb = ColorDB.get_colourdb(dbfile)
+            colourdb = ColourDB.get_colourdb(dbfile)
         if not self.__master:
             from Tkinter import Tk
             self.__master = Tk()
@@ -47,7 +47,7 @@ class Chooser:
         if colourdb:
             self.__sb.set_colourdb(colourdb)
         else:
-            colourdb = self.__sb.colordb()
+            colourdb = self.__sb.colourdb()
         if colour:
             r, g, b = Main.initial_color(colour, colourdb)
             self.__sb.update_views(r, g, b)
@@ -66,10 +66,10 @@ class Chooser:
         if not self.__wantspec:
             try:
                 name = colourdb.find_byrgb(rgbtuple)[0]
-            except ColorDB.BadColour:
+            except ColourDB.BadColour:
                 pass
         if name is None:
-            name = ColorDB.triplet_to_rrggbb(rgbtuple)
+            name = ColourDB.triplet_to_rrggbb(rgbtuple)
         return rgbtuple, name
 
     def save(self):
@@ -80,12 +80,12 @@ class Chooser:
 # convenience stuff
 _chooser = None
 
-def askcolor(colour = None, **options):
+def askcolor(color = None, **options):
     """Ask for a colour"""
     global _chooser
     if not _chooser:
         _chooser = apply(Chooser, (), options)
-    return _chooser.show(colour, options)
+    return _chooser.show(color, options)
 
 def save():
     global _chooser

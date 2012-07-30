@@ -3,37 +3,37 @@
 The classes in this file implement the StripViewer shown in the top two thirds
 of the main ColourAll window.  It consists of three StripWidgets which display
 the variations in red, green, and blue respectively of the currently selected
-r/g/b color value.
+r/g/b colour value.
 
-Each StripWidget shows the color variations that are reachable by varying an
-axis of the currently selected color.  So for example, if the color is
+Each StripWidget shows the colour variations that are reachable by varying an
+axis of the currently selected colour.  So for example, if the colour is
 
   (R,G,B)=(127,163,196)
 
-then the Red variations show colors from (0,163,196) to (255,163,196), the
-Green variations show colors from (127,0,196) to (127,255,196), and the Blue
-variations show colors from (127,163,0) to (127,163,255).
+then the Red variations show colours from (0,163,196) to (255,163,196), the
+Green variations show colours from (127,0,196) to (127,255,196), and the Blue
+variations show colours from (127,163,0) to (127,163,255).
 
-The selected color is always visible in all three StripWidgets, and in fact
-each StripWidget highlights the selected color, and has an arrow pointing to
+The selected colour is always visible in all three StripWidgets, and in fact
+each StripWidget highlights the selected colour, and has an arrow pointing to
 the selected chip, which includes the value along that particular axis.
 
-Clicking on any chip in any StripWidget selects that color, and updates all
+Clicking on any chip in any StripWidget selects that colour, and updates all
 arrows and other windows.  By toggling on Update while dragging, ColourAll will
-select the color under the cursor while you drag it, but be forewarned that
+select the colour under the cursor while you drag it, but be forewarned that
 this can be slow.
 """
 
 from Tkinter import *
-import ColorDB
+import ColourDB
 
 # Load this script into the Tcl interpreter and call it in
-# StripWidget.set_color().  This is about as fast as it can be with the
+# StripWidget.set_colour().  This is about as fast as it can be with the
 # current _tkinter.c interface, which doesn't support Tcl Objects.
 TCLPROC = '''\
-proc setcolor {canv colors} {
+proc setcolour {canv colours} {
     set i 1
-    foreach c $colors {
+    foreach c $colours {
         $canv itemconfigure $i -fill $c -outline $c
         incr i
     }
@@ -252,22 +252,22 @@ class StripWidget:
         canvas.bind('<B1-Motion>', self.__select_chip)
 
         # Load a proc into the Tcl interpreter.  This is used in the
-        # set_color() method to speed up setting the chip colors.
+        # set_colour() method to speed up setting the chip colours.
         canvas.tk.eval(TCLPROC)
 
-        # create the color strip
+        # create the colour strip
         chips = self.__chips = []
         x = 1
         y = 30
         tags = ('chip',)
         for c in range(self.__numchips):
-            color = 'grey'
+            colour = 'grey'
             canvas.create_rectangle(
                 x, y, x+chipwidth, y+chipheight,
-                fill=color, outline=color,
+                fill=colour, outline=colour,
                 tags=tags)
             x = x + chipwidth + 1                 # for outline
-            chips.append(color)
+            chips.append(colour)
 
         # create the strip label
         self.__label = canvas.create_text(
@@ -289,15 +289,15 @@ class StripWidget:
         return (x1 + x0) / 2.0
 
     # Invoked when one of the chips is clicked.  This should just tell the
-    # switchboard to set the color on all the output components
+    # switchboard to set the colour on all the output components
     def __select_chip(self, event=None):
         x = event.x
         y = event.y
         canvas = self.__canvas
         chip = canvas.find_overlapping(x, y, x, y)
         if chip and (1 <= chip[0] <= self.__numchips):
-            color = self.__chips[chip[0]-1]
-            red, green, blue = ColorDB.rrggbb_to_triplet(color)
+            colour = self.__chips[chip[0]-1]
+            red, green, blue = ColourDB.rrggbb_to_triplet(colour)
             etype = int(event.type)
             if (etype == BTNUP or self.__uwd.get()):
                 # update everyone
@@ -309,19 +309,19 @@ class StripWidget:
     def __trackarrow(self, chip, rgbtuple):
         # invert the last chip
         if self.__lastchip is not None:
-            color = self.__canvas.itemcget(self.__lastchip, 'fill')
-            self.__canvas.itemconfigure(self.__lastchip, outline=color)
+            colour = self.__canvas.itemcget(self.__lastchip, 'fill')
+            self.__canvas.itemconfigure(self.__lastchip, outline=colour)
         self.__lastchip = chip
         # get the arrow's text
-        coloraxis = rgbtuple[self.__axis]
+        colouraxis = rgbtuple[self.__axis]
         if self.__hexp.get():
             # hex
-            text = hex(coloraxis)
+            text = hex(colouraxis)
         else:
             # decimal
-            text = repr(coloraxis)
+            text = repr(colouraxis)
         # move the arrow, and set its text
-        if coloraxis <= 128:
+        if colouraxis <= 128:
             # use the left arrow
             self.__leftarrow.set_text(text)
             self.__leftarrow.move_to(self.__arrow_x(chip-1))
@@ -332,7 +332,7 @@ class StripWidget:
             self.__rightarrow.move_to(self.__arrow_x(chip-1))
             self.__leftarrow.move_to(-100)
         # and set the chip's outline
-        brightness = ColorDB.triplet_to_brightness(rgbtuple)
+        brightness = ColourDB.triplet_to_brightness(rgbtuple)
         if brightness <= 128:
             outline = 'white'
         else:
@@ -354,15 +354,15 @@ class StripWidget:
         tk = self.__canvas.tk
         # get the red, green, and blue components for all chips
         for t in self.__generator(self.__numchips, red, green, blue):
-            rrggbb = ColorDB.triplet_to_rrggbb(t)
+            rrggbb = ColourDB.triplet_to_rrggbb(t)
             chips.append(rrggbb)
             tred, tgreen, tblue = t
             if tred <= red and tgreen <= green and tblue <= blue:
                 chip = i
             i = i + 1
         # call the raw tcl script
-        colors = SPACE.join(chips)
-        tk.eval('setcolor %s {%s}' % (self.__canvas._w, colors))
+        colours = SPACE.join(chips)
+        tk.eval('setcolour %s {%s}' % (self.__canvas._w, colours))
         # move the arrows around
         self.__trackarrow(chip, (red, green, blue))
 

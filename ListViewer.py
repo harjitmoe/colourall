@@ -1,27 +1,27 @@
 """ListViewer class.
 
-This class implements an input/output view on the color model.  It lists every
-unique color (e.g. unique r/g/b value) found in the color database.  Each
-color is shown by small swatch and primary color name.  Some colors have
+This class implements an input/output view on the colour model.  It lists every
+unique colour (e.g. unique r/g/b value) found in the colour database.  Each
+colour is shown by small swatch and primary colour name.  Some colours have
 aliases -- more than one name for the same r/g/b value.  These aliases are
 displayed in the small listbox at the bottom of the screen.
 
-Clicking on a color name or swatch selects that color and updates all other
-windows.  When a color is selected in a different viewer, the color list is
-scrolled to the selected color and it is highlighted.  If the selected color
+Clicking on a colour name or swatch selects that colour and updates all other
+windows.  When a colour is selected in a different viewer, the colour list is
+scrolled to the selected colour and it is highlighted.  If the selected colour
 is an r/g/b value without a name, no scrolling occurs.
 
 You can turn off Update On Click if all you want to see is the alias for a
-given name, without selecting the color.
+given name, without selecting the colour.
 """
 
 from Tkinter import *
-import ColorDB
+import ColourDB
 
 # Import *object-oriented* canvas shape interface
 from Canvas import *	#You think this is obsolete? Think again! ~THH
 
-#ADDTOVIEW = 'Color %List Window...'
+#ADDTOVIEW = 'Colour %List Window...'
 
 class ListViewer:
     def __init__(self, switchboard, master=None, sa=0, mode="Luma"):
@@ -40,8 +40,8 @@ class ListViewer:
         if sa:
             root = self.__root = Toplevel(master, class_='ColourAll')
             root.protocol('WM_DELETE_WINDOW', self.withdraw)
-            root.title('ColourAll Color List')
-            root.iconname('ColourAll Color List')
+            root.title('ColourAll Colour List')
+            root.iconname('ColourAll Colour List')
             root.bind('<Alt-q>', self.__quit)
             root.bind('<Alt-Q>', self.__quit)
             root.bind('<Alt-w>', self.withdraw)
@@ -115,7 +115,7 @@ class ListViewer:
     def __populate(self):
         #
         # create all the buttons
-        colordb = self.__sb.colordb()
+        colourdb = self.__sb.colourdb()
         canvas = self.__canvas
         for i in self.__contents:
             i.delete()
@@ -127,7 +127,7 @@ class ListViewer:
                                160, 300,
                                outline='',
                                fill="#FFFFFF"))
-        for name in colordb.unique_names(self.mode):
+        for name in colourdb.unique_names(self.mode):
             #Whitewash
             self.__contents.append(Rectangle(canvas, 0, row*20+3,
                                    160, row*20 + 30,
@@ -135,25 +135,25 @@ class ListViewer:
                                    fill="#FFFFFF"))
             
             #Preview
-            exactcolor = ColorDB.triplet_to_rrggbb(colordb.find_byname(name))
+            exactcolour = ColourDB.triplet_to_rrggbb(colourdb.find_byname(name))
             previd = Rectangle(canvas, 5, row*20 + 5,
                                20, row*20 + 20,
-                               fill=exactcolor,
-                               tags=("V"+exactcolor, 'Vall'))
+                               fill=exactcolour,
+                               tags=("V"+exactcolour, 'Vall'))
             self.__contents.append(previd)
             
             #Label
             textid = CanvasText(canvas, 25, row*20 + 13,
                                 text=name,
                                 anchor=W,
-                                tags=("T"+exactcolor, 'Tall'))
+                                tags=("T"+exactcolour, 'Tall'))
             self.__contents.append(textid)
             
             #Selection Rectangle
             boxid = Rectangle(canvas, 0, row*20+4,
                               160, row*20 + 22,
                               outline='',
-                              tags=(exactcolor, 'all'))
+                              tags=(exactcolour, 'all'))
             textid.tkraise()
             previd.tkraise()
             self.__contents.append(boxid)
@@ -188,7 +188,7 @@ class ListViewer:
         else:
             return
         
-        red, green, blue = ColorDB.rrggbb_to_triplet(t)
+        red, green, blue = ColourDB.rrggbb_to_triplet(t)
         self.__dontcenter = 1
         if self.__uoc.get():
             self.__sb.update_views(red, green, blue)
@@ -219,21 +219,21 @@ class ListViewer:
         if self.__lastview:
             canvas.itemconfigure(self.__lastview, outline="#000000")
         # turn on the current box
-        colortag = ColorDB.triplet_to_rrggbb((red, green, blue))
-        canvas.itemconfigure(colortag, fill='#102080')
-        self.__lastbox = colortag
-        colorlabeltag = "T"+ColorDB.triplet_to_rrggbb((red, green, blue))
-        canvas.itemconfigure(colorlabeltag, fill='#FFFFFF')
-        self.__lastlabel = colorlabeltag
-        colorviewtag = "V"+ColorDB.triplet_to_rrggbb((red, green, blue))
-        canvas.itemconfigure(colorviewtag, outline='#FFFFFF')
-        self.__lastview = colorviewtag
+        colourtag = ColourDB.triplet_to_rrggbb((red, green, blue))
+        canvas.itemconfigure(colourtag, fill='#102080')
+        self.__lastbox = colourtag
+        colourlabeltag = "T"+ColourDB.triplet_to_rrggbb((red, green, blue))
+        canvas.itemconfigure(colourlabeltag, fill='#FFFFFF')
+        self.__lastlabel = colourlabeltag
+        colourviewtag = "V"+ColourDB.triplet_to_rrggbb((red, green, blue))
+        canvas.itemconfigure(colourviewtag, outline='#FFFFFF')
+        self.__lastview = colourviewtag
         # fill the aliases
         self.__aliases.delete(0, END)
         try:
-            aliases = self.__sb.colordb().aliases_of(red, green, blue)[1:]
-        except ColorDB.BadColor:
-            self.__aliases.insert(END, '<no matching color>')
+            aliases = self.__sb.colourdb().aliases_of(red, green, blue)[1:]
+        except ColourDB.BadColour:
+            self.__aliases.insert(END, '<no matching colour>')
             return
         if not aliases:
             self.__aliases.insert(END, '<no aliases>')
@@ -244,7 +244,7 @@ class ListViewer:
         if self.__dontcenter:
             self.__dontcenter = 0
         else:
-            ig, ig, ig, y1 = canvas.coords(colortag)
+            ig, ig, ig, y1 = canvas.coords(colourtag)
             ig, ig, ig, y2 = canvas.coords(self.__bboxes[-1])
             h = int(canvas['height']) * 0.5
             canvas.yview('moveto', (y1-h) / y2)
@@ -252,6 +252,6 @@ class ListViewer:
     def save_options(self, optiondb):
         optiondb['UPONCLICK'] = self.__uoc.get()
 
-    def colordb_changed(self, colordb):
+    def colourdb_changed(self, colourdb):
         self.__canvas.delete('all')
         self.__populate()

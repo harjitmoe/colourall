@@ -1,4 +1,4 @@
-html40colors = """# HTML 4.0 color names
+html40colours = """# HTML 4.0 colour names
 Black	#000000
 Silver	#c0c0c0
 Gray	#808080
@@ -17,7 +17,7 @@ Teal	#008080
 Aqua	#00ffff"""
 
 
-namedcolors = """# named colors from http://www.lightlink.com/xine/bells/namedcolors.html
+namedcolours = """# named colours from http://www.lightlink.com/xine/bells/namedcolours.html
 White                                            #FFFFFF
 Red                                              #FF0000
 Green                                            #00FF00
@@ -119,7 +119,7 @@ Wheat                                            #D8D8BF
 Yellow Green                                     #99CC32"""
 
 
-webcolors = """# De-facto NS & MSIE recognized HTML color names
+webcolours = """# De-facto NS & MSIE recognized HTML colour names
 AliceBlue   	 #f0f8ff
 AntiqueWhite   	 #faebd7
 Aqua    	 #00ffff
@@ -1270,7 +1270,7 @@ xrgb = """! $XConsortium: rgb.txt,v 10.41 94/02/20 18:39:36 rws Exp $
 
 #From Wikipedia, so under the Creative Commons Attribution ShareAlike 3.0 Unported, 
 #and maybe additional terms at http://en.wikipedia.org/wiki/Terms_of_use
-#Content retrieved from http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colors
+#Content retrieved from http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colours
 cryolacrayon="""# Crayola Standard Crayon Colours
 1   Almond                    #EFDECD  (239, 222, 205) 120        1998
 2   Antique Brass             #CD9575  (205, 149, 117) 120        1998           Metallic.
@@ -1422,7 +1422,7 @@ cryolacrayon="""# Crayola Standard Crayon Colours
 
 #From Wikipedia, so under the Creative Commons Attribution ShareAlike 3.0 Unported, 
 #and maybe additional terms at http://en.wikipedia.org/wiki/Terms_of_use
-#Content retrieved from http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colors
+#Content retrieved from http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colours
 cryolametalfx="""# Crayola "Metallic FX" crayons
 1  Alloy Orange          #C46210  (196, 98, 16)    2001
 2  B'dazzled Blue        #2E5894  (46, 88, 148)    2001
@@ -1443,7 +1443,7 @@ cryolametalfx="""# Crayola "Metallic FX" crayons
 
 #From Wikipedia, so under the Creative Commons Attribution ShareAlike 3.0 Unported, 
 #and maybe additional terms at http://en.wikipedia.org/wiki/Terms_of_use
-#Content retrieved from http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colors
+#Content retrieved from http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colours
 cryolasilver="""#Hex-To-Name of the Cray+ola (not to trigger the format sniffer) "Silver Swirls" crayons
 #C39953	Aztec Gold
 #A17A74	Burnished Brown
@@ -1472,7 +1472,7 @@ cryolasilver="""#Hex-To-Name of the Cray+ola (not to trigger the format sniffer)
 
 #From Wikipedia, so under the Creative Commons Attribution ShareAlike 3.0 Unported, 
 #and maybe additional terms at http://en.wikipedia.org/wiki/Terms_of_use
-#Content retrieved from http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colors
+#Content retrieved from http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colours
 cryolagems="""#Hex-To-Name of Cray+ola (not to trigger the format sniffer) "Gem Tones" Crayons
 #892EB0	Amethyst
 #A54E37	Citrine
@@ -1493,7 +1493,7 @@ cryolagems="""#Hex-To-Name of Cray+ola (not to trigger the format sniffer) "Gem 
 
 #From Wikipedia, so under the Creative Commons Attribution ShareAlike 3.0 Unported, 
 #and maybe additional terms at http://en.wikipedia.org/wiki/Terms_of_use
-#Content retrieved from http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colors
+#Content retrieved from http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colours
 cryolamscent="""#Approximate Hex-To-Name of colours chosen by Cray+ola for their "magic scent" crayons
 #FEFEFA	Baby Powder
 #FFD12A	Banana
@@ -1527,11 +1527,11 @@ cryolamscent="""#Approximate Hex-To-Name of colours chosen by Cray+ola for their
 #FF878D	Tulip"""
 
 #Copyright (c) 2004-2005 Voluntocracy. Permission is granted to copy 
-#and distribute modified or unmodified versions of this color 
+#and distribute modified or unmodified versions of this colour 
 #dictionary provided the copyright notice and this permission notice 
 #are preserved on all copies and the entire such work is distributed 
 #under the terms of a permission notice identical to this one.
-isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online version) Copyright (c) 2004-2005 Voluntocracy. Permission is granted to copy and distribute modified or unmodified versions of this color dictionary provided the copyright notice and this permission notice are preserved on all copies and the entire such work is distributed under the terms of a permission notice identical to this one. X11-style
+isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online version) Copyright (c) 2004-2005 Voluntocracy. Permission is granted to copy and distribute modified or unmodified versions of this colour dictionary provided the copyright notice and this permission notice are preserved on all copies and the entire such work is distributed under the terms of a permission notice identical to this one. X11-style
  96  78 151		abbey
  96  78 151		Abbey
 138 154  91		absinthe
@@ -2938,8 +2938,8 @@ isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online vers
 128  70  27		CaledonianBrown
 171  78  82		caliaturwood
 171  78  82		Caliaturwood
-111  78  55		california color
-111  78  55		CaliforniaColor
+111  78  55		california colour
+111  78  55		CaliforniaColour
 227 168  87		california gold
 227 168  87		CaliforniaGold
 143 140 114		california green
@@ -3458,8 +3458,8 @@ isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online vers
 159 119  65		Clay
 174 105  56		clay bank
 174 105  56		ClayBank
-144 105  37		clay color
-144 105  37		ClayColor
+144 105  37		clay colour
+144 105  37		ClayColour
 140 108  46		clay drab
 140 108  46		ClayDrab
  37 127 187		clear cadet blue
@@ -3788,8 +3788,8 @@ isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online vers
 235 232 164		CreamChant
 240 234 214		cream cheese
 240 234 214		CreamCheese
-248 222 126		cream color
-248 222 126		CreamColor
+248 222 126		cream colour
+248 222 126		CreamColour
 235 232 164		cream delight
 235 232 164		CreamDelight
 240 234 214		cream dream
@@ -4986,8 +4986,8 @@ isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online vers
 141 163 153		Favorite
 153 118 108		fawn
 153 118 108		Fawn
-155 126 106		fawn color
-155 126 106		FawnColor
+155 126 106		fawn colour
+155 126 106		FawnColour
 106 171 142		feldspar
 106 171 142		Feldspar
 138 154  91		fern
@@ -5092,8 +5092,8 @@ isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online vers
 221 199 165		Flesh
 203 170 162		flesh blond
 203 170 162		FleshBlond
-222 165 164		flesh color
-222 165 164		FleshColor
+222 165 164		flesh colour
+222 165 164		FleshColour
 243 214 181		flesh cream
 243 214 181		FleshCream
 158  71  50		flesh ochre
@@ -6104,8 +6104,8 @@ isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online vers
 179  68 108		Irresistible
 159 128  74		isabella
 159 128  74		Isabella
-161 143  96		isabella color
-161 143  96		IsabellaColor
+161 143  96		isabella colour
+161 143  96		IsabellaColour
 147 119  62		isabellinus
 147 119  62		Isabellinus
 142 209 178		island green
@@ -7738,8 +7738,8 @@ isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online vers
 224 187 181		PaleCongoPink
 146 216 194		pale emerald green
 146 216 194		PaleEmeraldGreen
-231 180 182		pale flesh color
-231 180 182		PaleFleshColor
+231 180 182		pale flesh colour
+231 180 182		PaleFleshColour
 199 230 215		pale fluorite green
 199 230 215		PaleFluoriteGreen
 210 222 160		pale glass green
@@ -7824,8 +7824,8 @@ isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online vers
 222 111 161		PaleRosolanePurple
 188 212 230		pale russian blue
 188 212 230		PaleRussianBlue
-250 214 165		pale salmon color
-250 214 165		PaleSalmonColor
+250 214 165		pale salmon colour
+250 214 165		PaleSalmonColour
 188 212 230		pale sky blue
 188 212 230		PaleSkyBlue
 191 184 165		pale smoke gray
@@ -8872,8 +8872,8 @@ isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online vers
 217 166 169		RoseCendre
 222 165 164		rose cloud
 222 165 164		RoseCloud
-214  91 140		rose color
-214  91 140		RoseColor
+214  91 140		rose colour
+214  91 140		RoseColour
 193 145 139		rose dawn
 193 145 139		RoseDawn
 243 229 171		rose de nymphe
@@ -9122,8 +9122,8 @@ isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online vers
 230 154 130		Salmon
 217 166 169		salmon buff
 217 166 169		SalmonBuff
-228 164 128		salmon color
-228 164 128		SalmonColor
+228 164 128		salmon colour
+228 164 128		SalmonColour
 244 194 194		salmon flush
 244 194 194		SalmonFlush
 238 168 168		salmon rose
@@ -9464,8 +9464,8 @@ isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online vers
  71 104 110		SlateBlue
 138 154  91		slate citron
 138 154  91		SlateCitron
- 85  85  85		slate color
- 85  85  85		SlateColor
+ 85  85  85		slate colour
+ 85  85  85		SlateColour
 121 104 120		slate orchid
 121 104 120		SlateOrchid
 144  93  93		slate rose
@@ -10520,8 +10520,8 @@ isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online vers
 210 205 105		Wau
 130 102  68		wax brown
 130 102  68		WaxBrown
-210 207 145		wax color
-210 207 145		WaxColor
+210 207 145		wax colour
+210 207 145		WaxColour
 180 116  94		wax red
 180 116  94		WaxRed
 210 207 145		wax white
@@ -10807,70 +10807,70 @@ isccnbsdict="""#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online vers
 111  78  55		zuni brown
 111  78  55		ZuniBrown"""
 
-from ColorDB import get_colordb_string,ColorDB
+from ColourDB import get_colourdb_string,ColourDB
 
-xrgb=get_colordb_string("xrgb",xrgb)
-isccnbsdict=get_colordb_string("isccnbsdict",isccnbsdict)
-cryolacrayon=get_colordb_string("cryolacrayon",cryolacrayon)
-cryolamscent=get_colordb_string("cryolamscent",cryolamscent)
-cryolametalfx=get_colordb_string("cryolametalfx",cryolametalfx)
-cryolasilver=get_colordb_string("cryolasilver",cryolasilver)
-cryolagems=get_colordb_string("cryolagems",cryolagems)
-namedcolors=get_colordb_string("namedcolors",namedcolors)
-html40colors=get_colordb_string("html",html40colors)
-webcolors=get_colordb_string("web",webcolors)
-websafe=get_colordb_string("safe",websafe)
+xrgb=get_colourdb_string("xrgb",xrgb)
+isccnbsdict=get_colourdb_string("isccnbsdict",isccnbsdict)
+cryolacrayon=get_colourdb_string("cryolacrayon",cryolacrayon)
+cryolamscent=get_colourdb_string("cryolamscent",cryolamscent)
+cryolametalfx=get_colourdb_string("cryolametalfx",cryolametalfx)
+cryolasilver=get_colourdb_string("cryolasilver",cryolasilver)
+cryolagems=get_colourdb_string("cryolagems",cryolagems)
+namedcolours=get_colourdb_string("namedcolours",namedcolours)
+html40colours=get_colourdb_string("html",html40colours)
+webcolours=get_colourdb_string("web",webcolours)
+websafe=get_colourdb_string("safe",websafe)
 
-unicolor=isccnbsdict._ColorDB__byname.copy()          #Base
-unicolor.update(cryolametalfx._ColorDB__byname.copy())#Very Extra
-unicolor.update(cryolasilver._ColorDB__byname.copy()) #Very Extra
-unicolor.update(cryolagems._ColorDB__byname.copy())   #Very Extra
-unicolor.update(cryolamscent._ColorDB__byname.copy()) #Very Extra
-unicolor.update(namedcolors._ColorDB__byname.copy())  #Extra
-unicolor.update(cryolacrayon._ColorDB__byname.copy()) #Extra
-unicolor.update(xrgb._ColorDB__byname.copy())         #Canonical
-unicolor.update(webcolors._ColorDB__byname.copy())    #Common
+unicolour=isccnbsdict._ColourDB__byname.copy()          #Base
+unicolour.update(cryolametalfx._ColourDB__byname.copy())#Very Extra
+unicolour.update(cryolasilver._ColourDB__byname.copy()) #Very Extra
+unicolour.update(cryolagems._ColourDB__byname.copy())   #Very Extra
+unicolour.update(cryolamscent._ColourDB__byname.copy()) #Very Extra
+unicolour.update(namedcolours._ColourDB__byname.copy())  #Extra
+unicolour.update(cryolacrayon._ColourDB__byname.copy()) #Extra
+unicolour.update(xrgb._ColourDB__byname.copy())         #Canonical
+unicolour.update(webcolours._ColourDB__byname.copy())    #Common
 #websafe irrelevant
-unicolor.update(html40colors._ColorDB__byname.copy()) #Standard
+unicolour.update(html40colours._ColourDB__byname.copy()) #Standard
 
-unicolor["rich maroon"]=unicolor["richmaroon"]=unicolor["maroon x11"]=unicolor["maroonx11"]=xrgb.find_byname("maroon")
-unicolor["maroon5"]=unicolor["maroon"]
-unicolor["purple x11"]=unicolor["purplex11"]=xrgb.find_byname("purple")
-unicolor["gray x11"]=unicolor["grayx11"]=unicolor["grey x11"]=unicolor["greyx11"]=xrgb.find_byname("gray")
-unicolor["light gray x11"]=unicolor["lightgrayx11"]=unicolor["light grey x11"]=unicolor["lightgreyx11"]=xrgb.find_byname("lightgray")
+unicolour["rich maroon"]=unicolour["richmaroon"]=unicolour["maroon x11"]=unicolour["maroonx11"]=xrgb.find_byname("maroon")
+unicolour["maroon5"]=unicolour["maroon"]
+unicolour["purple x11"]=unicolour["purplex11"]=xrgb.find_byname("purple")
+unicolour["gray x11"]=unicolour["grayx11"]=unicolour["grey x11"]=unicolour["greyx11"]=xrgb.find_byname("gray")
+unicolour["light gray x11"]=unicolour["lightgrayx11"]=unicolour["light grey x11"]=unicolour["lightgreyx11"]=xrgb.find_byname("lightgray")
 # Comes up as BronzeIi (capital then lowercase I), looks like "Bronzeli"
 # Inconsistant with other naming convention (X11) and only "2" in LL-Xine compared to many numbers in X11
-unicolor["bronze2"]=unicolor["bronze ii"]
-del unicolor["bronze ii"]
+unicolour["bronze2"]=unicolour["bronze ii"]
+del unicolour["bronze ii"]
 
 #Additions for humorous or cultural effect
-unicolor["pygmie puffskn"]=unicolor["pygmiepuffskn"]=unicolor["deeppink2"]
+unicolour["pygmie puffskn"]=unicolour["pygmiepuffskn"]=unicolour["deeppink2"]
 
 #Add camel names
 CamelHelper={}
-for i in unicolor.keys():
+for i in unicolour.keys():
 	if " " in i:
 		CamelHelper[i.replace(" ","").lower()]=i
 def cptlz(s):
 	return s[0].upper()+s[1:].lower()
-for i in unicolor.keys():
+for i in unicolour.keys():
 	#Add spaces to numbered names
 	nonumber=i.rstrip("0123456789")
 	number=i[len(nonumber):]
 	if number and (nonumber in CamelHelper):
 		i2=CamelHelper[nonumber.lower()]+" "+number
-		unicolor[i2]=unicolor[i]
+		unicolour[i2]=unicolour[i]
 		i=i2
 	#Camelize
 	j=i.replace("-"," ").split()
 	j=map(lambda s:cptlz(s),j)
 	j="".join(j)
-	unicolor[j]=unicolor[i]
+	unicolour[j]=unicolour[i]
 	if j.lower()!=i:
-		unicolor[j.lower()]=unicolor[j] #Just In Case
-for j in unicolor.keys():
+		unicolour[j.lower()]=unicolour[j] #Just In Case
+for j in unicolour.keys():
 	if "'" in j:
-		unicolor[j.replace("'","")]=unicolor[j]
+		unicolour[j.replace("'","")]=unicolour[j]
 
 #class alertah(dict):
 #	def __getitem__(self,n):
@@ -10879,7 +10879,7 @@ for j in unicolor.keys():
 #		else:
 #			print "KLAXON!!!!",n
 #			return (0,0,0)
-#unicolor=alertah(unicolor)
+#unicolour=alertah(unicolour)
 
 def count_caps_and_apostrophes(str):
 	caps=0
@@ -10932,10 +10932,10 @@ def get_priority(name):
 		priority-=200
 	return priority
 
-class DictColorDB(ColorDB):
+class DictColourDB(ColourDB):
 	def __init__(self,byname):
-		#In DictColorDB not ColorDB so names must be premangled
-		self._ColorDB__byname=byname
+		#In DictColourDB not ColourDB so names must be premangled
+		self._ColourDB__byname=byname
 		byrgb1={}
 		for i in byname.keys():
 			if byname[i] in byrgb1.keys():
@@ -10948,7 +10948,7 @@ class DictColorDB(ColorDB):
 			truename=None
 			abort=False
 			for j in aliases:
-				if j in html40colors._ColorDB__byname.keys():
+				if j in html40colours._ColourDB__byname.keys():
 					if j.title() in aliases:
 						aliases.remove(j.title())
 					truename=j.title()
@@ -10970,8 +10970,8 @@ class DictColorDB(ColorDB):
 				#print truename,aliases,shortlist
 				aliases.remove(truename)
 				byrgb[i]=(truename,aliases)
-		self._ColorDB__byrgb=byrgb
-		self._ColorDB__allnames=None
-		self._ColorDB__name="palettes/(Internal)"
+		self._ColourDB__byrgb=byrgb
+		self._ColourDB__allnames=None
+		self._ColourDB__name="palettes/(Internal)"
 
-unicolor=DictColorDB(unicolor)
+unicolour=DictColourDB(unicolour)

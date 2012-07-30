@@ -1,12 +1,12 @@
 """TextViewer class.
 
-The TextViewer allows you to see how the selected color would affect various
+The TextViewer allows you to see how the selected colour would affect various
 characteristics of a Tk text widget.  This is an output viewer only.
 
 In the top part of the window is a standard text widget with some sample text
 in it.  You are free to edit this text in any way you want (BAW: allow you to
 change font characteristics).  If you want changes in other viewers to update
-text characteristics, turn on Track color changes.
+text characteristics, turn on Track colour changes.
 
 To select which characteristic tracks the change, select one of the radio
 buttons in the window below.  Text foreground and background affect the text
@@ -16,7 +16,7 @@ in the text window (which only has a background).
 """
 
 from Tkinter import *
-import ColorDB
+import ColourDB
 
 ADDTOVIEW = 'Text Window...'
 
@@ -54,12 +54,12 @@ class TextViewer:
         self.__text.insert(0.0, optiondb.get('TEXT', '''\
 Insert some stuff here and play
 with the buttons below to see
-how the colors interact in
+how the colours interact in
 textual displays.
 
 See how the selection can also
 be affected by tickling the buttons
-and choosing a color.'''))
+and choosing a colour.'''))
         insert = optiondb.get('TEXTINS')
         if insert:
             self.__text.mark_set(INSERT, insert)
@@ -78,7 +78,7 @@ and choosing a color.'''))
         self.__which.set(optiondb.get('WHICH', 0))
         #
         # track toggle
-        self.__t = Checkbutton(root, text='Track color changes',
+        self.__t = Checkbutton(root, text='Track colour changes',
                                variable=self.__trackp,
                                relief=GROOVE,
                                command=self.__toggletrack)
@@ -110,7 +110,7 @@ and choosing a color.'''))
                     continue
                 r = Radiobutton(frame, variable=self.__which,
                                 value=(row-2)*2 + col-1,
-                                command=self.__set_color)
+                                command=self.__set_colour)
                 r.grid(row=row, column=col)
                 self.__radios.append(r)
         self.__toggletrack()
@@ -139,41 +139,41 @@ and choosing a color.'''))
         for l in self.__labels:
             l.configure(foreground=fg)
 
-    def __set_color(self, event=None):
+    def __set_colour(self, event=None):
         which = self.__which.get()
         text = self.__text
         if which == 0:
-            color = text['foreground']
+            colour = text['foreground']
         elif which == 1:
-            color = text['background']
+            colour = text['background']
         elif which == 2:
-            color = text['selectforeground']
+            colour = text['selectforeground']
         elif which == 3:
-            color = text['selectbackground']
+            colour = text['selectbackground']
         elif which == 5:
-            color = text['insertbackground']
+            colour = text['insertbackground']
         try:
-            red, green, blue = ColorDB.rrggbb_to_triplet(color)
-        except ColorDB.BadColor:
-            # must have been a color name
-            red, green, blue = self.__sb.colordb().find_byname(color)
+            red, green, blue = ColourDB.rrggbb_to_triplet(colour)
+        except ColourDB.BadColour:
+            # must have been a colour name
+            red, green, blue = self.__sb.colourdb().find_byname(colour)
         self.__sb.update_views(red, green, blue)
 
     def update_yourself(self, red, green, blue):
         if self.__trackp.get():
-            colorname = ColorDB.triplet_to_rrggbb((red, green, blue))
+            colourname = ColourDB.triplet_to_rrggbb((red, green, blue))
             which = self.__which.get()
             text = self.__text
             if which == 0:
-                text.configure(foreground=colorname)
+                text.configure(foreground=colourname)
             elif which == 1:
-                text.configure(background=colorname)
+                text.configure(background=colourname)
             elif which == 2:
-                text.configure(selectforeground=colorname)
+                text.configure(selectforeground=colourname)
             elif which == 3:
-                text.configure(selectbackground=colorname)
+                text.configure(selectbackground=colourname)
             elif which == 5:
-                text.configure(insertbackground=colorname)
+                text.configure(insertbackground=colourname)
 
     def save_options(self, optiondb):
         optiondb['TRACKP'] = self.__trackp.get()

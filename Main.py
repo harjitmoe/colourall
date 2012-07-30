@@ -22,9 +22,9 @@ Introduction (THH)
 Original Introduction (Barry Warsaw)
 ====================================
 
-    Pynche is a color editor based largely on a similar program that I
+    Pynche is a colour editor based largely on a similar program that I
     originally wrote back in 1987 for the Sunview window system.  That
-    editor was called ICE, the Interactive Color Editor.  I'd always
+    editor was called ICE, the Interactive Colour Editor.  I'd always
     wanted to port this program to X but didn't feel like hacking X
     and C code to do it.  Fast forward many years, to where Python +
     Tkinter provides such a nice programming environment, with enough
@@ -36,7 +36,7 @@ Original Introduction (Barry Warsaw)
     (e.g. 2.0.1 and 2.1.1), using Tk 8.0.x.  It's been tested on
     Solaris 2.6, Windows NT 4, and various Linux distros.  You'll want
     to be sure to have at least Tk 8.0.3 for Windows.  Also, Pynche is
-    very colormap intensive, so it doesn't work very well on 8-bit
+    very colourmap intensive, so it doesn't work very well on 8-bit
     graphics cards; 24bit+ graphics cards are so cheap these days,
     I'll probably never "fix" that.
 
@@ -54,9 +54,9 @@ Running
     -h
         Print the help message.
 
-    initialcolor
-        a Tk color name or #rrggbb color spec to be used as the
-        initially selected color.  This overrides any color saved in
+    initialcolour
+        a Tk colour name or #rrggbb colour spec to be used as the
+        initially selected colour.  This overrides any colour saved in
         the persistent init file.  Since `#' needs to be escaped in
         many shells, it is optional in the spec (e.g. #45dd1f is the
         same as 45dd1f).
@@ -66,77 +66,77 @@ Running
   -------------------------
 
     ColourAll can be run as a modal dialog, inside another application,
-    say as a general color chooser.  ColourAll supports the API
-    implemented by the Tkinter standard tkColorChooser module, with a
-    few changes as described below.  By importing caColorChooser from
+    say as a general colour chooser.  ColourAll supports the API
+    implemented by the Tkinter standard tkColourChooser module, with a
+    few changes as described below.  By importing caColourChooser from
     the ColourAll package, you can run
 
-        caColorChooser.askcolor()
+        caColourChooser.askcolour()
 
     which will popup ColourAll as a modal dialog, and return the 
-    selected color.
+    selected colour.
 
     There are some UI differences when running as a modal
     vs. standalone.  When running as a modal, there is no "Quit" menu
     item under the "File" menu.  Instead there are "Okay" and "Cancel"
     buttons.
 
-    When "Okay" is hit, askcolor() returns the tuple
+    When "Okay" is hit, askcolour() returns the tuple
 
         ((r, g, b), "name")
 
-    where r, g, and b are red, green, and blue color values
-    respectively (in the range 0 to 255).  "name" will be a color name
-    from the color database if there is an exact match, otherwise it
-    will be a hex color spec of the form "#rrggbb".  Note that this
-    is different than tkColorChooser, which doesn't know anything
-    about color names.
+    where r, g, and b are red, green, and blue colour values
+    respectively (in the range 0 to 255).  "name" will be a colour name
+    from the colour database if there is an exact match, otherwise it
+    will be a hex colour spec of the form "#rrggbb".  Note that this
+    is different than tkColourChooser, which doesn't know anything
+    about colour names.
 
-    askcolor() supports the following optional keyword arguments:
+    askcolour() supports the following optional keyword arguments:
 
-        color
-            the color to set as the initial selected color
+        colour
+            the colour to set as the initial selected colour
 
         master[*]
             the master window to use as the parent of the modal
-            dialog.  Without this argument, pyColorChooser will create 
+            dialog.  Without this argument, pyColourChooser will create 
             its own Tkinter.Tk instance as the master.  This may not
             be what you want.
 
         wantspec
             When this is true, the "name" field in the return tuple
-            will always be a color spec of the form "#rrggbb".  It
-            will not return a color name even if there is a match;
-            this is so pyColorChooser can exactly match the API of
-            tkColorChooser.
+            will always be a colour spec of the form "#rrggbb".  It
+            will not return a colour name even if there is a match;
+            this is so pyColourChooser can exactly match the API of
+            tkColourChooser.
 
         [*] these arguments must be specified the first time
-        askcolor() is used and cannot be changed on subsequent calls.
+        askcolour() is used and cannot be changed on subsequent calls.
 
 Integrated Views
 ================
 
-  The Colorstrip Window
+  The Colourstrip Window
   ---------------------
 
     The top part of the main ColourAll window contains the "variation
-    strips".  Each strip contains a number of "color chips".  The
-    strips always indicate the currently selected color by a highlight
-    rectangle around the selected color chip, with an arrow pointing
+    strips".  Each strip contains a number of "colour chips".  The
+    strips always indicate the currently selected colour by a highlight
+    rectangle around the selected colour chip, with an arrow pointing
     to the chip.  Each arrow has an associated number giving you the
-    color value along the variation's axis.  Each variation strip
-    shows you the colors that are reachable from the selected color by
-    varying just one axis of the color solid.
+    colour value along the variation's axis.  Each variation strip
+    shows you the colours that are reachable from the selected colour by
+    varying just one axis of the colour solid.
 
-    For example, when the selected color is (in Red/Green/Blue
+    For example, when the selected colour is (in Red/Green/Blue
     notation) 127/127/127, the Red Variations strip shows you every
-    color in the range 0/127/127 to 255/127/127.  Similarly for the
-    green and blue axes.  You can select any color by clicking on its
+    colour in the range 0/127/127 to 255/127/127.  Similarly for the
+    green and blue axes.  You can select any colour by clicking on its
     chip.  This will update the highlight rectangle and the arrow, as
     well as other displays in ColourAll.
 
     Click on "Update while dragging" if you want ColourAll to update 
-    the selected color while you drag along any variation strip (this 
+    the selected colour while you drag along any variation strip (this 
     will be a bit slower).  Click on "Hexadecimal" to display the 
     arrow numbers in hex.
 
@@ -148,27 +148,27 @@ Integrated Views
   ----------------
 
     In the lower left corner of the main window you see two larger
-    color chips.  The Selected chip shows you a larger version of the
-    color selected in the variation strips, along with its hex color
-    specification.  The Nearest chip shows you the closest color in
-    the database to the selected color, giving its hex color
-    specification, and below that, its color name.  When the
-    Selected chip color exactly matches the Nearest chip color, you
-    will see the color name appear below the color specification for
+    colour chips.  The Selected chip shows you a larger version of the
+    colour selected in the variation strips, along with its hex colour
+    specification.  The Nearest chip shows you the closest colour in
+    the database to the selected colour, giving its hex colour
+    specification, and below that, its colour name.  When the
+    Selected chip colour exactly matches the Nearest chip colour, you
+    will see the colour name appear below the colour specification for
     the Selected chip.
     
-    Clicking on the Nearest color chip selects that color.  Color
-    distance is calculated in the 3D space of the RGB color solid and
-    if more than one color name is the same distance from the selected
-    color, the first one found will be chosen.
+    Clicking on the Nearest colour chip selects that colour.  Colour
+    distance is calculated in the 3D space of the RGB colour solid and
+    if more than one colour name is the same distance from the selected
+    colour, the first one found will be chosen.
 
-    Note that there may be more than one color name for the same
+    Note that there may be more than one colour name for the same
     RGB value.  In that case, the first one found in the text database
     is designated the "primary" name, and this is shown under the
     Nearest chip.  The other names are "aliases" and they are visible
-    in the Color List Window (see below).
+    in the Colour List Window (see below).
 
-    Both the color specifications and color names are selectable for
+    Both the colour specifications and colour names are selectable for
     copying and pasting into another window.
 
 
@@ -176,37 +176,37 @@ Integrated Views
   ------------------
 
     At the lower right of the main window are three entry fields.
-    Here you can type numeric values for any of the three color axes.
+    Here you can type numeric values for any of the three colour axes.
     Legal values are between 0 and 255, and these fields do not allow
     you to enter illegal values.  You must hit Enter or Tab to select
-    the new color.
+    the new colour.
 
     Click on "Update while typing" if you want ColourAll to select 
-    the color on every keystroke (well, every one that produces a 
-    legal value!)  Click on "Hexadecimal" to display and enter color 
+    the colour on every keystroke (well, every one that produces a 
+    legal value!)  Click on "Hexadecimal" to display and enter colour 
     values in hex.
 
-  The Color List Window
+  The Colour List Window
   ---------------------
 
-    The "Color List" window shows every named color in the color name
+    The "Colour List" window shows every named colour in the colour name
     database, it is now in ColourAll's right panel.  In the upper
-    part of the window you see a scrolling list of all the color names
-    in the database, in alphabetical order.  Click on any color to
+    part of the window you see a scrolling list of all the colour names
+    in the database, in alphabetical order.  Click on any colour to
     select it.  In the bottom part of the window is displayed any
-    aliases for the selected color (those color names that have the
+    aliases for the selected colour (those colour names that have the
     same RGB value, but were found later in the text database).  For
-    example, find the color "Aqua" and you'll see that its alias is
+    example, find the colour "Aqua" and you'll see that its alias is
     "Cyan".
 
-    If the color has no aliases you'll see "<no aliases>" here.  If you
-    just want to see if a color has an alias, and do not want to select a
-    color when you click on it, turn off "Update on Click".
+    If the colour has no aliases you'll see "<no aliases>" here.  If you
+    just want to see if a colour has an alias, and do not want to select a
+    colour when you click on it, turn off "Update on Click".
 
-    Note that the color list is always updated when a color is selected
+    Note that the colour list is always updated when a colour is selected
     from the main window.  There's no way to turn this feature off.  If
-    the selected color has no matching color name you'll see
-    "<no matching color>" in the Aliases window.
+    the selected colour has no matching colour name you'll see
+    "<no matching colour>" in the Aliases window.
 
 
 Other Views
@@ -220,20 +220,20 @@ Other Views
   The Text Window
   ---------------
 
-    The "Text Window" allows you to see what effects various colors
+    The "Text Window" allows you to see what effects various colours
     have on the standard Tk text widget elements.  In the upper part
     of the window is a plain Tk text widget and here you can edit the
     text, select a region of text, etc.  Below this is a button "Track
-    color changes".  When this is turned on, any colors selected in
+    colour changes".  When this is turned on, any colours selected in
     the other windows will change the text widget element specified in
     the radio buttons below.  When this is turned off, text widget
-    elements are not affected by color selection.
+    elements are not affected by colour selection.
 
-    You can choose which element gets changed by color selection by
+    You can choose which element gets changed by colour selection by
     clicking on one of the radio buttons in the bottom part of this
     window.  Text foreground and background affect the text in the
     upper part of the window.  Selection foreground and background
-    affect the colors of the primary selection which is what you see
+    affect the colours of the primary selection which is what you see
     when you click the middle button (depending on window system) and
     drag it through some text.
 
@@ -245,20 +245,20 @@ Other Views
   The Details Window
   ------------------
 
-    The "Details" window gives you more control over color selection
-    than just clicking on a color chip in the main window.  The row of
+    The "Details" window gives you more control over colour selection
+    than just clicking on a colour chip in the main window.  The row of
     buttons along the top apply the specified increment and decrement
-    amounts to the selected color.  These delta amounts are applied to
+    amounts to the selected colour.  These delta amounts are applied to
     the variation strips specified by the check boxes labeled "Move
     Sliders".  Thus if just Red and Green are selected, hitting -10
-    will subtract 10 from the color value along the red and green
+    will subtract 10 from the colour value along the red and green
     variation only.  Note the message under the checkboxes; this
-    indicates the primary color level being changed when more than one
+    indicates the primary colour level being changed when more than one
     slider is tied together.  For example, if Red and Green are
     selected, you will be changing the Yellow level of the selected
-    color.
+    colour.
 
-    The "At Boundary" behavior determines what happens when any color
+    The "At Boundary" behavior determines what happens when any colour
     variation hits either the lower or upper boundaries (0 or 255) as
     a result of clicking on the top row buttons:
 
@@ -306,19 +306,19 @@ Keyboard Accelerators
     Alt-q in any window exits ColourAll (except when running as a modal).
 
 
-Color Name Databases
+Colour Name Databases
 ====================
 
-    The original Pynche used color name database files to 
-    calculate the nearest color to the selected color, and to display 
-    in the Color List view.  Several files were distributed with 
+    The original Pynche used colour name database files to 
+    calculate the nearest colour to the selected colour, and to display 
+    in the Colour List view.  Several files were distributed with 
     Pynche, files contributing to the bultin database are described 
     below. You can still use such database files!
 
-    html40colors.txt -- the HTML 4.0 guaranteed colour names.  Was 
+    html40colours.txt -- the HTML 4.0 guaranteed colour names.  Was 
     guaranteed to contribute to the list.
 
-    webcolors.txt -- The 140 colour names that Tim Peters and his
+    webcolours.txt -- The 140 colour names that Tim Peters and his
     sister say NS and MSIE both understand (with some controversy 
     over AliceBlue). Was included.
 
@@ -356,9 +356,9 @@ Color Name Databases
 
      X Window System is a trademark of The Open Group
 
-    namedcolors.txt -- an alternative set of Netscape colors?
+    namedcolours.txt -- an alternative set of Netscape colours?
     Contributed any colours not otherwise present.
-    Retrieved from http://www.lightlink.com/xine/bells/namedcolors.html
+    Retrieved from http://www.lightlink.com/xine/bells/namedcolours.html
     
     Extra databases contributing to the builtin are detailed below:
     
@@ -366,13 +366,13 @@ Color Name Databases
     crayons.  From Wikipedia, so under the Creative Commons Attribution
     ShareAlike 3.0 Unported, and maybe additional terms at 
     http://en.wikipedia.org/wiki/Terms_of_use . Content retrieved from 
-    http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colors, author
+    http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colours, author
     list can be obtained at:
-http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colors?action=history
+http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colours?action=history
     
     Retsof Online Version of ISCC-NBS Dictionary of Colour Names --
     Copyright (c) 2004-2005 Voluntocracy. Permission is granted to copy 
-    and distribute modified or unmodified versions of this color 
+    and distribute modified or unmodified versions of this colour 
     dictionary provided the copyright notice and this permission notice 
     are preserved on all copies and the entire such work is distributed 
     under the terms of a permission notice identical to this one.
@@ -394,7 +394,7 @@ __doc__=__doc__%globals()
 import sys
 import os
 import getopt
-import ColorDB
+import ColourDB
 
 import ColourAllWidget
 ColourAllWidget.docs=__doc__
@@ -448,40 +448,40 @@ def version():
     app._ColourAllWidget__tkroot.mainloop()
     sys.exit(0)
 
-def initial_color(s, colordb):
-    # function called on every color
-    def scan_color(s, colordb=colordb):
+def initial_colour(s, colourdb):
+    # function called on every colour
+    def scan_colour(s, colourdb=colourdb):
         try:
-            r, g, b = colordb.find_byname(s)
-        except ColorDB.BadColor:
+            r, g, b = colourdb.find_byname(s)
+        except ColourDB.BadColour:
             try:
-                r, g, b = ColorDB.rrggbb_to_triplet(s)
-            except (ColorDB.BadColor,ValueError):
+                r, g, b = ColourDB.rrggbb_to_triplet(s)
+            except (ColourDB.BadColour,ValueError):
                 return None, None, None
         return r, g, b
     #
-    # First try the passed in color
-    r, g, b = scan_color(s)
+    # First try the passed in colour
+    r, g, b = scan_colour(s)
     if r is None:
-        # try the same color with '#' prepended, since some shells require
+        # try the same colour with '#' prepended, since some shells require
         # this to be escaped, which is a pain
-        r, g, b = scan_color('#' + s)
+        r, g, b = scan_colour('#' + s)
     if r is None:
-        print 'Bad initial color, using gray50:', s
-        r, g, b = scan_color('gray50')
+        print 'Bad initial colour, using gray50:', s
+        r, g, b = scan_colour('gray50')
     if r is None:
-        usage(1, 'Cannot find an initial color to use')
+        usage(1, 'Cannot find an initial colour to use')
         # does not return
     return r, g, b
 
 
-#from ColourAllWidget import get_colordb
+#from ColourAllWidget import get_colourdb
 
-def build(master=None, initialcolor="#808080", initfile=None, ignore=None,
+def build(master=None, initialcolour="#808080", initfile=None, ignore=None,
           dbfile=None):
     global app,s
-    if not initialcolor:
-        initialcolor="#808080"
+    if not initialcolour:
+        initialcolour="#808080"
     
     # create all output widgets
     s = Switchboard(0)
@@ -496,7 +496,7 @@ def build(master=None, initialcolor="#808080", initfile=None, ignore=None,
     s.add_view(TypeinViewer(s, w))
     s.add_view(ListViewer(s, w))
 
-    s.update_views(*initial_color(initialcolor,s.colordb()))
+    s.update_views(*initial_colour(initialcolour,s.colourdb()))
     return app, s
 
 
@@ -519,9 +519,9 @@ def main():
         usage(1, msg)
 
     if len(args) == 0:
-        initialcolor = None
+        initialcolour = None
     elif len(args) == 1:
-        initialcolor = args[0]
+        initialcolour = args[0]
     else:
         usage(1)
 
@@ -534,7 +534,7 @@ def main():
         elif opt in ('-v', '--version'):
             version()
 
-    app, sb = build(initialcolor=initialcolor,
+    app, sb = build(initialcolour=initialcolour,
                     initfile=initfile,
                     ignore=ignore,
                     dbfile=dbfile)

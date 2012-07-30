@@ -17,7 +17,7 @@ Optionally, Viewers can also implement:
       dictionary any values the Viewer wants to save in the persistent
       ~/.colral file.  This dictionary is saved using marshal.  The namespace
       for the keys is ad-hoc; make sure you don't clobber some other Viewer's
-      keys!
+      keys! XXX. For portability's sake this no longer happens?
 
     - withdraw() which takes no arguments.  This is called when ColourAll is
       unmapped.  All Viewers should implement this.
@@ -34,6 +34,9 @@ the `View' menu.  ADDTOVIEW contains a string which is used as the menu item
 to display the Viewer (one kludge: if the string contains a `%', this is used
 to indicate that the next character will get an underline in the menu,
 otherwise the first character is underlined).
+
+Note that viewers for compilation into EXE are found STATICALLY by 
+ColourAllWidger.py
 
 FooViewer.py should contain a class called FooViewer, and its constructor
 should take two arguments, an instance of Switchboard, and optionally a Tk

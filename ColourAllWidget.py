@@ -274,7 +274,8 @@ def make_view_popups(switchboard, root, extrapath):
     for dir in dirs:
         if dir == '':
             dir = '.'
-        l=['ChipViewer.py', 'DetailsViewer.py', 'ListViewer.py', 'StripViewer.py', 'TextViewer.py',  'TypeinViewer.py']
+	#See also _py2exe_mf_imports() (below)
+        l=['ChipViewer.py', 'DetailsViewer.py', 'ListViewer.py', 'StripViewer.py', 'TextViewer.py',  'TypeinViewer.py', 'GotoViewer']
         if sys.executable.lower().find(sys.argv[0].lower())<0: #Any better way?
             print "Non-Applet"
             l=os.listdir(dir)
@@ -304,5 +305,5 @@ def make_view_popups(switchboard, root, extrapath):
     viewers.sort()
     return viewers
 
-def _py2exe_mf_imports(): import ChipViewer,DetailsViewer,ListViewer,StripViewer,TextViewer,TypeinViewer
+def _py2exe_mf_imports(): import ChipViewer,DetailsViewer,ListViewer,StripViewer,TextViewer,TypeinViewer,GotoViewer #See also make_view_popups() (above)
 

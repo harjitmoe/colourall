@@ -1,4 +1,4 @@
-"""ColourAll %(__version__)s
+"""ColourAllMC1 %(__version__)s
 
 ORIGINAL AUTHOR: Barry Warsaw <barry@python.org>
 

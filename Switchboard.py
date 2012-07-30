@@ -15,12 +15,10 @@ Optionally, Viewers can also implement:
 
     - save_options() which takes an optiondb (a dictionary).  Store into this
       dictionary any values the Viewer wants to save in the persistent
-      ~/.colral file.  This dictionary is saved using marshal.  The namespace
-      for the keys is ad-hoc; make sure you don't clobber some other Viewer's
-      keys! XXX. For portability's sake this no longer happens?
+      colorall.ini (which is actually a pickle;).  This should be 8.3.
 
     - withdraw() which takes no arguments.  This is called when ColourAll is
-      unmapped.  All Viewers should implement this.
+      unmapped.  This is strongly recommended.
 
     - colourdb_changed() which takes a single argument, an instance of
       ColourDB.  This is called whenever the colour name database is changed and
@@ -36,7 +34,7 @@ to indicate that the next character will get an underline in the menu,
 otherwise the first character is underlined).
 
 Note that viewers for compilation into EXE are found STATICALLY by 
-ColourAllWidger.py
+ColourAllWidget.py
 
 FooViewer.py should contain a class called FooViewer, and its constructor
 should take two arguments, an instance of Switchboard, and optionally a Tk
@@ -45,11 +43,14 @@ master window.
 """
 
 import sys
+import os
 from types import DictType
-import marshal
+import pickle
 
+myfile=os.path.abspath(sys.argv[0])
+mydir=os.path.dirname(myfile)
+config=os.path.join(mydir,"colorall.ini")
 
-
 class Switchboard:
     def __init__(self, initfile):
         self.__initfile = initfile
@@ -60,18 +61,22 @@ class Switchboard:
         self.__green = 0
         self.__blue = 0
         self.__canceled = 0
-        self.__optiondb = {
+        self.__optiondb.update({
             #These options make life easier by far...
             "HEXTYPE":1,
             "UPWHILETYPE":1,
             "UPWHILEDRAG":1,
+	})
+	if os.path.exists(config):
+		self.__optiondb.update(pickle.load(open(config,"rU")))
+        self.__optiondb.update({
             #...and these are required due to the non-X palette
             'TEXTBG':"white",
             'TEXTFG':"black",
             'TEXT_IBG':"black",
             'TEXT_SBG':"navy",
             'TEXT_SFG':"white",
-        }
+        })
 
     def add_view(self, view):
         self.__views.append(view)
@@ -85,6 +90,7 @@ class Switchboard:
         self.__blue = blue
         for v in self.__views:
             v.update_yourself(red, green, blue)
+	self.save_views()
 
     def update_views_current(self):
         self.update_views(self.__red, self.__green, self.__blue)
@@ -106,9 +112,16 @@ class Switchboard:
         return self.__optiondb
 
     def withdraw_views(self):
+        self.save_views()
         for v in self.__views:
             if hasattr(v, 'withdraw'):
                 v.withdraw()
+
+    def save_views(self):
+        for v in self.__views:
+	    if hasattr(v, 'save_options'):
+		v.save_options(self.__optiondb)
+	pickle.dump(self.__optiondb,open(config,"w"),0)
 
     def canceled(self, flag=1):
         self.__canceled = flag

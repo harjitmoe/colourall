@@ -35,6 +35,13 @@ class GotoViewer:
 				name=askstring("Enter colour...", "Please enter a colour string to look up", parent=self.__m)
 				if name==None:
 					return
+			#Easter egg below:
+			if name.encode("rot13")=='lbhe fxva':
+				name='juvgr'.encode("rot13")
+			if name.encode("rot13")=='lbhe snpr':
+				name='oyhfu'.encode("rot13")
+			if name.encode("rot13")=='lbhe zhz':
+				name='crnfnag'.encode("rot13")
 			if name[0]=="#":
 				r,g,b=ColourDB.rrggbb_to_triplet(name)
 			else:

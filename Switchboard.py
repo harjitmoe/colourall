@@ -13,10 +13,6 @@ conform to the following interface:
 
 Optionally, Viewers can also implement:
 
-    - save_options() which takes an optiondb (a dictionary).  Store into this
-      dictionary any values the Viewer wants to save in the persistent
-      colorall.ini (which is actually a pickle;).  This should be 8.3.
-
     - withdraw() which takes no arguments.  This is called when ColourAll is
       unmapped.  This is strongly recommended.
 
@@ -47,10 +43,6 @@ import os
 from types import DictType
 import pickle
 
-myfile=os.path.abspath(sys.argv[0])
-mydir=os.path.dirname(myfile)
-config=os.path.join(mydir,"colorall.ini")
-
 class Switchboard:
     def __init__(self, initfile):
         self.__initfile = initfile
@@ -67,11 +59,6 @@ class Switchboard:
             "UPWHILETYPE":1,
             "UPWHILEDRAG":1,
 	})
-	if os.path.exists(config):
-		try:
-			self.__optiondb.update(pickle.load(open(config,"rU")))
-		except:
-			print "Option DB Loading failed"
         self.__optiondb.update({
             #...and these are required due to the non-X palette
             'TEXTBG':"white",
@@ -93,7 +80,6 @@ class Switchboard:
         self.__blue = blue
         for v in self.__views:
             v.update_yourself(red, green, blue)
-	self.save_views()
 
     def update_views_current(self):
         self.update_views(self.__red, self.__green, self.__blue)
@@ -115,16 +101,9 @@ class Switchboard:
         return self.__optiondb
 
     def withdraw_views(self):
-        self.save_views()
         for v in self.__views:
             if hasattr(v, 'withdraw'):
                 v.withdraw()
-
-    def save_views(self):
-        for v in self.__views:
-	    if hasattr(v, 'save_options'):
-		v.save_options(self.__optiondb)
-	pickle.dump(self.__optiondb,open(config,"w"),0)
 
     def canceled(self, flag=1):
         self.__canceled = flag

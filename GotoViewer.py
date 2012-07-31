@@ -12,6 +12,8 @@ from tkSimpleDialog import askstring
 
 ADDTOVIEW = 'Go to colour...'
 
+import encodings.rot_13 # For freeze
+
 class GotoViewer:
 	def __init__(self, switchboard, master=None, sa=0):
 		#This is supposed to create a withdrawn widget

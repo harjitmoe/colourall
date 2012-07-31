@@ -8,6 +8,8 @@ except ImportError:
 
 sys.path=[]
 
+sys.frozen=1
+
 #The above by THH
 #The below from Python's site.py, tweaked for simplicity by THH
 

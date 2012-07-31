@@ -1,4 +1,4 @@
-"""Main ColourAll (Pythonically Natural Colour and Hue Editor) widget.
+"""Main ColourAll (Colour Editor) widget.
 
 This window provides the basic decorations, primarily including the menubar.
 It is used to bring up other windows.
@@ -276,7 +276,7 @@ def make_view_popups(switchboard, root, extrapath):
             dir = '.'
 	#See also _py2exe_mf_imports() (below)
         l=['ChipViewer.py', 'DetailsViewer.py', 'ListViewer.py', 'StripViewer.py', 'TextViewer.py',  'TypeinViewer.py', 'GotoViewer.py']
-        if hasattr(sys,"frozen") and sys.frozen:
+        if (not hasattr(sys,"frozen")) or (not sys.frozen):
             print "Non-Applet"
             l=os.listdir(dir)
         for file in l:

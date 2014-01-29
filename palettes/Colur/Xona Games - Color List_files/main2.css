@@ -1,0 +1,18 @@
+/* Effective stylesheet produced by snapshot save */
+body { color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); font-family: georgia,verdana,arial; margin: 0px; }
+a { text-decoration: underline; }
+a:link { color: rgb(0, 0, 255); }
+a:visited { color: rgb(119, 0, 187); }
+a:hover { color: rgb(255, 0, 0); text-decoration: underline; }
+table { font-size: 16px; font-family: georgia,verdana,arial; }
+font.footerBottom { font-family: arial; font-size: 12px; color: rgb(255, 255, 255); text-decoration: none; }
+a.footerBottom { text-decoration: underline; }
+a.footerBottom:link { color: rgb(255, 255, 255); }
+a.footerBottom:visited { color: rgb(255, 255, 255); text-decoration: underline; }
+a.footerBottom:hover { color: rgb(255, 0, 0); text-decoration: underline; }
+table.footerBottom { background-color: rgb(32, 144, 224); width: 100%; border-top: 0px dashed rgb(0, 0, 0); }
+table.sideMenuAndMainArea { width: 100%; background: none repeat scroll 0% 0% rgb(255, 255, 255); border-width: 0px; border-style: solid; border-color: rgb(0, 0, 0); padding: 0px; }
+td.mainArea { background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); width: 100%; font-size: 16px; font-family: georgia,verdana,arial; padding: 10px 64px 0px; border-width: 0px; border-style: dashed; border-color: rgb(223, 223, 255) rgb(191, 191, 255); vertical-align: top; }
+table.pageTitle { width: 100%; padding-bottom: 20px; }
+td.pageTitle { background-color: white; font-size: 29px; font-variant: small-caps; font-weight: bold; font-family: georgia,verdana,arial; color: black; border-bottom: 0px solid white; padding-bottom: 5px; letter-spacing: 0px; text-align: center; border-top: 1px solid black; }
+td.pageTitle { background-color: white; font-size: 36px; font-variant: small-caps; font-weight: bold; font-family: georgia,verdana,arial; color: black; padding-bottom: 0px; padding-top: 10px; letter-spacing: 5px; text-align: center; border-top: 4px solid black; }

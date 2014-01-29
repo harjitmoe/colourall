@@ -366,21 +366,19 @@ Colour Name Databases
     crayons.  From Wikipedia, so under the Creative Commons Attribution
     ShareAlike 3.0 Unported, and maybe additional terms at 
     http://en.wikipedia.org/wiki/Terms_of_use . Content retrieved from 
-    http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colours , author
-    list can be obtained at:
-http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colours?action=history
+    http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colours .
     
     Retsof Online Version of ISCC-NBS Dictionary of Colour Names --
-    Copyright (c) 2004-2005 Voluntocracy. Permission is granted to copy 
+    "Copyright (c) 2004-2005 Voluntocracy. Permission is granted to copy 
     and distribute modified or unmodified versions of this colour 
     dictionary provided the copyright notice and this permission notice 
     are preserved on all copies and the entire such work is distributed 
-    under the terms of a permission notice identical to this one.
-    The notice "Website page design and content Copyright (c)2000-2006 
+    under the terms of a permission notice identical to this one."
+    (The notice "Website page design and content Copyright (c)2000-2006 
     John C. Foster and Texas Precancel Club - All Rights Reserved. Awards 
     images are the property of the respective award program owners and 
-    used with permission." was also present but would appear not to apply
-    specifically to said table.
+    used with permission." was also present but seems not to apply
+    specifically to said table.)
 
 """
 
@@ -388,7 +386,7 @@ http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colours?action=history
 
 
 
-__version__ = '1.1 alpha3.1'
+__version__ = '1.1 alpha4'
 
 __doc__=__doc__%globals()
 import sys

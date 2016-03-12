@@ -6,7 +6,7 @@ Eventually published in 2016, hence the date on the below.
 
 Copyright (c) 2016 Thomas Hori.
 
-Copying and distribution of this file, with or without modification,
+Copying and distribution of these files, with or without modification,
 are permitted in any medium without royalty provided the copyright
 notice and this notice are preserved.
 
@@ -17,7 +17,8 @@ Copyright (c) 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
 Python Software Foundation; 
 All Rights Reserved
 
-and licensed according to the below:
+and licensed according to the below.  Other possibly applicable
+licences and notices are noted in the MAIN.py docstring.
 
 ---
 

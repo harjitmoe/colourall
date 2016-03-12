@@ -456,7 +456,7 @@ class StripViewer:
                                         command=self.__togglegentype)
         self.__variations.grid(row=1, column=1, sticky=W)
         self.__constants = Radiobutton(frame3,
-                                       text='Double-Channels (faulty?)',
+                                       text='Double-Channels',
                                        variable=self.__gentypevar,
                                        value=1,
                                        command=self.__togglegentype)

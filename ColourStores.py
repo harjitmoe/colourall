@@ -12855,18 +12855,27 @@ webcolours=get_colourdb_string("web",webcolours)
 websafe=get_colourdb_string("safe",websafe)
 xona_db=get_colourdb_string("xona_db",xona_db)
 
+def special_update(out,in_):
+    for key in in_.keys():
+        if key in out.keys():
+            r1,g1,b1=in_[key]
+            r2,g2,b2=out[key]
+            out[key]=((r1+r2)//2,(g1+g2)//2,(b1+b2)//2) #i.e. approximate mean.
+        else:
+            out[key]=in_[key]
+
 unicolour=isccnbsdict._ColourDB__byname.copy()          #Base
-unicolour.update(cryolametalfx._ColourDB__byname.copy())#Very Extra
-unicolour.update(cryolasilver._ColourDB__byname.copy()) #Very Extra
-unicolour.update(cryolagems._ColourDB__byname.copy())   #Very Extra
-unicolour.update(cryolamscent._ColourDB__byname.copy()) #Very Extra
-unicolour.update(namedcolours._ColourDB__byname.copy())  #Extra
-unicolour.update(cryolacrayon._ColourDB__byname.copy()) #Extra
-unicolour.update(xona_db._ColourDB__byname.copy()) #Extra
-unicolour.update(xrgb._ColourDB__byname.copy())         #Canonical
-unicolour.update(webcolours._ColourDB__byname.copy())    #Common
+special_update(unicolour,cryolametalfx._ColourDB__byname.copy())#Very Extra
+special_update(unicolour,cryolasilver._ColourDB__byname.copy()) #Very Extra
+special_update(unicolour,cryolagems._ColourDB__byname.copy())   #Very Extra
+special_update(unicolour,cryolamscent._ColourDB__byname.copy()) #Very Extra
+special_update(unicolour,namedcolours._ColourDB__byname.copy())  #Extra
+special_update(unicolour,cryolacrayon._ColourDB__byname.copy()) #Extra
+special_update(unicolour,xona_db._ColourDB__byname.copy()) #Extra
+special_update(unicolour,xrgb._ColourDB__byname.copy())         #Canonical
+special_update(unicolour,webcolours._ColourDB__byname.copy())    #Common
 #websafe irrelevant
-unicolour.update(html40colours._ColourDB__byname.copy()) #Standard
+special_update(unicolour,html40colours._ColourDB__byname.copy()) #Standard
 
 unicolour["rich maroon"]=unicolour["richmaroon"]=unicolour["maroon x11"]=unicolour["maroonx11"]=xrgb.find_byname("maroon")
 unicolour["maroon5"]=unicolour["maroon"]

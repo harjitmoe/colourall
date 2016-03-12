@@ -69,11 +69,14 @@ class ColourDB:
             # version the `name', or the CapitalizedVersion, etc.
             key = (red, green, blue)
             foundname, aliases = self.__byrgb.get(key, (name, []))
+            if foundname.lower()=="bayleaf": print name, foundname, aliases, key
             if foundname != name and foundname not in aliases:
                 aliases.append(foundname)
             self.__byrgb[key] = (name, aliases)
             # add to byname lookup
-            self.__byname[keyname] = key
+            for keyname in [name]+aliases:
+                keyname = keyname.lower()
+                self.__byname[keyname] = key
             lineno = lineno + 1
 
     # override in derived classes
@@ -153,7 +156,7 @@ class ColourDB:
                 self.__allnames.__dict__["mode"].append(name)
             
             if mode.lower()=="alphabet":
-                # sort irregardless of case
+                # sort regardless of case
                 def my_cmp(n1, n2):
                     v1,v2=n1.lower(),n2.lower()
                     return (v1 > v2) - (v1 < v2)

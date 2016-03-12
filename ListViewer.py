@@ -231,7 +231,13 @@ class ListViewer:
         # fill the aliases
         self.__aliases.delete(0, END)
         try:
-            aliases = self.__sb.colourdb().aliases_of(red, green, blue)[1:]
+            aliases_ = self.__sb.colourdb().aliases_of(red, green, blue)
+            not_alias=[aliases_[0].replace(" ","").lower()]
+            aliases=[]
+            for try_alias in aliases_:
+                if try_alias.replace(" ","").lower() not in not_alias:
+                    aliases.append(try_alias)
+                    not_alias.append(try_alias.replace(" ","").lower())
         except ColourDB.BadColour:
             self.__aliases.insert(END, '<no matching colour>')
             return

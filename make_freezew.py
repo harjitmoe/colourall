@@ -144,5 +144,5 @@ for modname,module in finder.modules.items():
 os.chdir("build")
 makefreeze.makefreeze(basename,finder.modules)
 n=["gcc","-IC:\\Python25\\include","-LC:\\Python25\\libs"]+filter(lambda i:i.endswith(".c"),os.listdir("."))+["..\\Freeze\\frozenmain.c","-lpython25","-Wl,--subsystem,windows","-o../dist/%s.exe"%basename, "-v", "-O2"]#
-os.spawnv(os.P_WAIT,"C:\\msys\\1.0\\mingw\\bin\gcc.exe",n)
+os.spawnv(os.P_WAIT,r"C:\Ruby\DevKit\mingw\bin\gcc.exe",n)
 os.chdir(os.pardir)

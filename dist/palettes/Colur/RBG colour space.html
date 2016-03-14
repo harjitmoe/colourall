@@ -1,0 +1,1467 @@
+<html>
+<head>
+<link rel=StyleSheet href="../../pdbstyle.css" type="text/css" media=all>
+<title>RBG colour space</title>
+</head>
+<body bgcolor="#ffffff">
+
+<center>
+<h1>RGB colour space</h1>
+Lists of RGB values for named colours<p>
+Written by <a href="../">Paul Bourke</a><br>
+May 1995<p>
+<a href="resene.html">Resene RGB Values List</a><p>
+<a href="sgi.html">This table</a> is the "standard" set as used by the SGI X windows
+server. The values are in the range of 0 to 255 inclusive.<p>
+Contribution by Robert Rapplean, 
+<a href="colorcube.cpp">C++ program</a> that creates 
+<a href="colorcube.bmp">an image</a> that can be
+folded together to form the RGB colour cube.
+</center>
+
+<p><hr><p>
+
+<h3>Colour space</h3>
+
+<p align="justify">
+A colour space is a means of uniquely specifying a colour. There are a number
+of colour spaces in common usage depending on the particular industry and/or
+application involved. For example as humans we normally determine colour by
+parameters such as brightness, hue, and colourfulness. On computers it is more
+common to describe colour by three components, normally red, green, and blue.
+These are related to the excitation of red, green, and blue phosphors on a
+computer monitor. Another similar system geared more towards the printing
+industry uses cyan, magenta, and yellow to specify colour, they are related to
+the reflectance and absorbance of inks on paper.
+</p>
+
+Some other major colour spaces are:<br>
+<ul>
+<li>HSL, Hue Saturation and Lightness.<br>
+<li>HSI, Hue Saturation and Intensity<br>
+<li>HSV, Hue Saturation and Value<br>
+<li>CIE, a colour standard from the for Commission Internationale 
+de l'Eclairage based on brightness, hue, and colourfulness.
+</ul>
+
+<p align="justify"> 
+There are generally ways of converting (transforming) between different colour
+spaces although in most cases the transformation is nonlinear. Some colour
+spaces for example can represent colours which cannot be represented in others.
+</p>
+
+<h3>RGB colour cube</h3>
+
+<p align="justify"> 
+The colour space for computer based applications is often visualised by a unit
+cube. Each colour (red, green, blue) is assigned to one of the three orthogonal
+coordinate axes in 3D space. An example of such a cube is shown below along
+with some key colours and their coordinates.
+</p>
+
+<center>
+<img src="colourspace1.gif" width="427" height="361">
+<p></center>
+
+<b>Note:</b><p>
+<ul>
+<li>Along each axis of the colour cube the colours range from no contribution of
+that component to a fully saturated colour. <br>
+
+<li>The colour cube is solid, any point (colour) within the cube is specified by
+three numbers, namely, an r,g,b triple.<br>
+
+<li>The diagonal line of the cube from black (0,0,0) to white (1,1,1) represents
+all the greys, that is, all the red, green, and blue components are the same.<br>
+
+<li>In practice different computer hardware/software combinations will use
+different ranges for the colours, common ones are 0-256 and 0-65536 for each
+component. This is simply a linear scaling of the unit colour cube described
+here.<br>
+
+<li>This RGB colour space lies within our perceptual space, that is, the RGB cube
+is smaller and represents fewer colours than we can see.<p>
+</ul>
+
+A more "colourful" view of the shell of the colour cube is shown below.
+<p>
+<center>
+<img src="colourspace2.jpeg" width="425" height="242">
+<p></center>
+
+<h3>RGB colour values for "familiar" colours.</h3>
+
+<p align="justify">
+The first set below was originally compiled by Steve Hollasch and
+is organised as follows: the first column is the 
+descriptive name of the colour; the next three columns are the RGB
+coordinates in the 0 to 255 range as if the components were being
+stored in one unsigned byte; the last three columns are the RGB
+colour coordinates in the range of 0 to 1 inclusive.
+</p>
+
+<pre>
+<b>Whites</b>
+antique_white     250   235   215   0.9804   0.9216   0.8431
+azure             240   255   255   0.9412   1.0000   1.0000
+bisque            255   228   196   1.0000   0.8941   0.7686
+blanched_almond   255   235   205   1.0000   0.9216   0.8039
+cornsilk          255   248   220   1.0000   0.9725   0.8627
+eggshell          252   230   201   0.9900   0.9000   0.7900
+floral_white      255   250   240   1.0000   0.9804   0.9412
+gainsboro         220   220   220   0.8627   0.8627   0.8627
+ghost_white       248   248   255   0.9725   0.9725   1.0000
+honeydew          240   255   240   0.9412   1.0000   0.9412
+ivory             255   255   240   1.0000   1.0000   0.9412
+lavender          230   230   250   0.9020   0.9020   0.9804
+lavender_blush    255   240   245   1.0000   0.9412   0.9608
+lemon_chiffon     255   250   205   1.0000   0.9804   0.8039
+linen             250   240   230   0.9804   0.9412   0.9020
+mint_cream        245   255   250   0.9608   1.0000   0.9804
+misty_rose        255   228   225   1.0000   0.8941   0.8824
+moccasin          255   228   181   1.0000   0.8941   0.7098
+navajo_white      255   222   173   1.0000   0.8706   0.6784
+old_lace          253   245   230   0.9922   0.9608   0.9020
+papaya_whip       255   239   213   1.0000   0.9373   0.8353
+peach_puff        255   218   185   1.0000   0.8549   0.7255
+seashell          255   245   238   1.0000   0.9608   0.9333
+snow              255   250   250   1.0000   0.9804   0.9804
+thistle           216   191   216   0.8471   0.7490   0.8471
+titanium_white    252   255   240   0.9900   1.0000   0.9400
+wheat             245   222   179   0.9608   0.8706   0.7020
+white             255   255   255   1.0000   1.0000   1.0000
+white_smoke       245   245   245   0.9608   0.9608   0.9608
+zinc_white        253   248   255   0.9900   0.9700   1.0000
+
+<b>Greys</b>
+cold_grey         128   138   135   0.5000   0.5400   0.5300
+dim_grey          105   105   105   0.4118   0.4118   0.4118
+grey              192   192   192   0.7529   0.7529   0.7529
+light_grey        211   211   211   0.8275   0.8275   0.8275
+slate_grey        112   128   144   0.4392   0.5020   0.5647
+slate_grey_dark    47    79    79   0.1843   0.3098   0.3098
+slate_grey_light  119   136   153   0.4667   0.5333   0.6000
+warm_grey         128   128   105   0.5000   0.5000   0.4100
+
+<b>Blacks</b>
+black               0     0     0   0.0000   0.0000   0.0000
+ivory_black        41    36    33   0.1600   0.1400   0.1300
+lamp_black         46    71    59   0.1800   0.2800   0.2300
+
+<b>Reds</b>
+alizarin_crimson  227    38    54   0.8900   0.1500   0.2100
+brick             156   102    31   0.6100   0.4000   0.1200
+cadmium_red_deep  227    23    13   0.8900   0.0900   0.0500
+coral             255   127    80   1.0000   0.4980   0.3137
+coral_light       240   128   128   0.9412   0.5020   0.5020
+deep_pink         255    20   147   1.0000   0.0784   0.5765
+english_red       212    61    26   0.8300   0.2400   0.1000
+firebrick         178    34    34   0.6980   0.1333   0.1333
+geranium_lake     227    18    48   0.8900   0.0700   0.1900
+hot_pink          255   105   180   1.0000   0.4118   0.7059
+indian_red        176    23    31   0.6900   0.0900   0.1200
+light_salmon      255   160   122   1.0000   0.6275   0.4784
+madder_lake_deep  227    46    48   0.8900   0.1800   0.1900
+maroon            176    48    96   0.6902   0.1882   0.3765
+pink              255   192   203   1.0000   0.7529   0.7961
+pink_light        255   182   193   1.0000   0.7137   0.7569
+raspberry         135    38    87   0.5300   0.1500   0.3400
+red               255     0     0   1.0000   0.0000   0.0000
+rose_madder       227    54    56   0.8900   0.2100   0.2200
+salmon            250   128   114   0.9804   0.5020   0.4471
+tomato            255    99    71   1.0000   0.3882   0.2784
+venetian_red      212    26    31   0.8300   0.1000   0.1200
+
+<b>Browns</b>
+beige             163   148   128   0.6400   0.5800   0.5000
+brown             128    42    42   0.5000   0.1647   0.1647
+brown_madder      219    41    41   0.8600   0.1600   0.1600
+brown_ochre       135    66    31   0.5300   0.2600   0.1200
+burlywood         222   184   135   0.8706   0.7216   0.5294
+burnt_sienna      138    54    15   0.5400   0.2100   0.0600
+burnt_umber       138    51    36   0.5400   0.2000   0.1400
+chocolate         210   105    30   0.8235   0.4118   0.1176
+deep_ochre        115    61    26   0.4500   0.2400   0.1000
+flesh             255   125    64   1.0000   0.4900   0.2500
+flesh_ochre       255    87    33   1.0000   0.3400   0.1300
+gold_ochre        199   120    38   0.7800   0.4700   0.1500
+greenish_umber    255    61    13   1.0000   0.2400   0.0500
+khaki             240   230   140   0.9412   0.9020   0.5490
+khaki_dark        189   183   107   0.7412   0.7176   0.4196
+light_beige       245   245   220   0.9608   0.9608   0.8627
+peru              205   133    63   0.8039   0.5216   0.2471
+rosy_brown        188   143   143   0.7373   0.5608   0.5608
+raw_sienna        199    97    20   0.7800   0.3800   0.0800
+raw_umber         115    74    18   0.4500   0.2900   0.0700
+sepia              94    38    18   0.3700   0.1500   0.0700
+sienna            160    82    45   0.6275   0.3216   0.1765
+saddle_brown      139    69    19   0.5451   0.2706   0.0745
+sandy_brown       244   164    96   0.9569   0.6431   0.3765
+tan               210   180   140   0.8235   0.7059   0.5490
+van_dyke_brown     94    38     5   0.3700   0.1500   0.0200
+
+<b>Oranges</b>
+cadmium_orange    255    97     3   1.0000   0.3800   0.0100
+cadmium_red_light 255     3    13   1.0000   0.0100   0.0500
+carrot            237   145    33   0.9300   0.5700   0.1300
+dark_orange       255   140     0   1.0000   0.5490   0.0000
+mars_orange       150    69    20   0.5900   0.2700   0.0800
+mars_yellow       227   112    26   0.8900   0.4400   0.1000
+orange            255   128     0   1.0000   0.5000   0.0000
+orange_red        255    69     0   1.0000   0.2706   0.0000
+yellow_ochre      227   130    23   0.8900   0.5100   0.0900
+
+<b>Yellows</b>
+aureoline_yellow  255   168    36   1.0000   0.6600   0.1400
+banana            227   207    87   0.8900   0.8100   0.3400
+cadmium_lemon     255   227     3   1.0000   0.8900   0.0100
+cadmium_yellow    255   153    18   1.0000   0.6000   0.0700
+gold              255   215     0   1.0000   0.8431   0.0000
+goldenrod         218   165    32   0.8549   0.6471   0.1255
+goldenrod_dark    184   134    11   0.7216   0.5255   0.0431
+goldenrod_light   250   250   210   0.9804   0.9804   0.8235
+goldenrod_pale    238   232   170   0.9333   0.9098   0.6667
+light_goldenrod   238   221   130   0.9333   0.8667   0.5098
+melon             227   168   105   0.8900   0.6600   0.4100
+naplesyellowdeep  255   168    18   1.0000   0.6600   0.0700
+yellow            255   255     0   1.0000   1.0000   0.0000
+yellow_light      255   255   224   1.0000   1.0000   0.8784
+
+<b>Greens</b>
+chartreuse        127   255     0   0.4980   1.0000   0.0000
+chromeoxidegreen  102   128    20   0.4000   0.5000   0.0800
+cinnabar_green     97   179    41   0.3800   0.7000   0.1600
+cobalt_green       61   145    64   0.2400   0.5700   0.2500
+emerald_green       0   201    87   0.0000   0.7900   0.3400
+forest_green       34   139    34   0.1333   0.5451   0.1333
+green               0   255     0   0.0000   1.0000   0.0000
+green_dark          0   100     0   0.0000   0.3922   0.0000
+green_pale        152   251   152   0.5961   0.9843   0.5961
+green_yellow      173   255    47   0.6784   1.0000   0.1843
+lawn_green        124   252     0   0.4863   0.9882   0.0000
+lime_green         50   205    50   0.1961   0.8039   0.1961
+mint              189   252   201   0.7400   0.9900   0.7900
+olive              59    94    43   0.2300   0.3700   0.1700
+olive_drab        107   142    35   0.4196   0.5569   0.1373
+olive_green_dark   85   107    47   0.3333   0.4196   0.1843
+permanent_green    10   201    43   0.0400   0.7900   0.1700
+sap_green          48   128    20   0.1900   0.5000   0.0800
+sea_green          46   139    87   0.1804   0.5451   0.3412
+sea_green_dark    143   188   143   0.5608   0.7373   0.5608
+sea_green_medium   60   179   113   0.2353   0.7020   0.4431
+sea_green_light    32   178   170   0.1255   0.6980   0.6667
+spring_green        0   255   127   0.0000   1.0000   0.4980
+spring_greenmedium  0   250   154   0.0000   0.9804   0.6039
+terre_verte        56    94    15   0.2200   0.3700   0.0600
+viridian_light    110   255   112   0.4300   1.0000   0.4400
+yellow_green      154   205    50   0.6039   0.8039   0.1961
+
+<b>Cyans</b>
+aquamarine        127   255   212   0.4980   1.0000   0.8314
+aquamarinemedium  102   205   170   0.4000   0.8039   0.6667
+cyan                0   255   255   0.0000   1.0000   1.0000
+cyan_white        224   255   255   0.8784   1.0000   1.0000
+turquoise          64   224   208   0.2510   0.8784   0.8157
+turquoise_dark      0   206   209   0.0000   0.8078   0.8196
+turquoise_medium   72   209   204   0.2824   0.8196   0.8000
+turquoise_pale    175   238   238   0.6863   0.9333   0.9333
+
+<b>Blues</b>
+alice_blue        240   248   255   0.9412   0.9725   1.0000
+blue                0     0   255   0.0000   0.0000   1.0000
+blue_light        173   216   230   0.6784   0.8471   0.9020
+blue_medium         0     0   205   0.0000   0.0000   0.8039
+cadet              95   158   160   0.3725   0.6196   0.6275
+cobalt             61    89   171   0.2400   0.3500   0.6700
+cornflower        100   149   237   0.3922   0.5843   0.9294
+cerulean            5   184   204   0.0200   0.7200   0.8000
+dodger_blue        30   144   255   0.1176   0.5647   1.0000
+indigo              8    46    84   0.0300   0.1800   0.3300
+manganese_blue      3   168   158   0.0100   0.6600   0.6200
+midnight_blue      25    25   112   0.0980   0.0980   0.4392
+navy                0     0   128   0.0000   0.0000   0.5020
+peacock            51   161   201   0.2000   0.6300   0.7900
+powder_blue       176   224   230   0.6902   0.8784   0.9020
+royal_blue         65   105   225   0.2549   0.4118   0.8824
+slate_blue        106    90   205   0.4157   0.3529   0.8039
+slate_blue_dark    72    61   139   0.2824   0.2392   0.5451
+slate_blue_light  132   112   255   0.5176   0.4392   1.0000
+slate_blue_medium 123   104   238   0.4824   0.4078   0.9333
+sky_blue          135   206   235   0.5294   0.8078   0.9216
+sky_blue_deep       0   191   255   0.0000   0.7490   1.0000
+sky_blue_light    135   206   250   0.5294   0.8078   0.9804
+steel_blue         70   130   180   0.2745   0.5098   0.7059
+steel_blue_light  176   196   222   0.6902   0.7686   0.8706
+turquoise_blue      0   199   140   0.0000   0.7800   0.5500
+ultramarine        18    10   143   0.0700   0.0400   0.5600
+
+<b>Magentas</b>
+blue_violet       138    43   226   0.5412   0.1686   0.8863
+cobalt_violetdeep 145    33   158   0.5700   0.1300   0.6200
+magenta           255     0   255   1.0000   0.0000   1.0000
+orchid            218   112   214   0.8549   0.4392   0.8392
+orchid_dark       153    50   204   0.6000   0.1961   0.8000
+orchid_medium     186    85   211   0.7294   0.3333   0.8275
+permanent_violet  219    38    69   0.8600   0.1500   0.2700
+plum              221   160   221   0.8667   0.6275   0.8667
+purple            160    32   240   0.6275   0.1255   0.9412
+purple_medium     147   112   219   0.5765   0.4392   0.8588
+ultramarine_violet 92    36   110   0.3600   0.1400   0.4300
+violet            143    94   153   0.5600   0.3700   0.6000
+violet_dark       148     0   211   0.5804   0.0000   0.8275
+violet_red        208    32   144   0.8157   0.1255   0.5647
+violet_redmedium  199    21   133   0.7804   0.0824   0.5216
+violet_red_pale   219   112   147   0.8588   0.4392   0.5765</pre>
+
+
+<h3>References</h3>
+
+An inexpensive scheme for calibration of a color monitor in terms of CIE
+standard coordinates<br>
+W.B. Cowan, Computer Graphics, Vol. 17 No. 3, 1983
+<p>
+
+Calibration of a computer controlled color monitor<br>
+Brainard, D.H,
+Color Research &amp; Application, 14, 1, pp 23-34 (1989).
+<p>
+
+Color Monitor Colorimetry<br>
+SMPTE Recommended Practice RP 145-1987<p>
+
+Color Temperature for Color Television Studio Monitors<br>
+SMPTE Recommended Practice RP 37<p>
+
+Color Science in Television and Display Systems<br>
+Sproson, W, N, Adam Hilger Ltd, 1983. ISBN 0-85274-413-7 <p>
+
+CIE Colorimetry<br>
+Official recommendations of the International
+Commission on Illumination, Publication 15.2 1986<p>
+
+CRT Colorimetry:Part 1 Theory and Practice, Part 2 Metrology<br>
+Berns, R.S., Motta, R.J. and Gorzynski, M.E., Color Research and 
+Application, 18, (1993)<p>
+
+Effective Color Displays. Theory and Practice<br>
+Travis, D, Academic Press, 1991. ISBN 0-12-697690-2 <p>
+
+Color and Its Reproduction<br>
+Field, G.G., Graphics Arts Technical, Foundation, 1988, pp. 320-9<p>
+
+Gamma and its disguises: The nonlinear mappings of intensity in perception,
+CRT's, Film and Video<br>
+C. A. Poynton, SMPTE Journal, December 1993<p>
+
+Measuring Color (second edition), <br>
+R. W. G. Hunt, Ellis Horwood 1991, ISBN 0-13-567686-x<p>
+
+On the Gun Independence and Phosphor Consistency of Color Video
+Monitors<br>
+W.B. Cowan N. Rowell, Color Research and Application, V.11 Supplement 1986<p>
+
+Precision requirements for digital color reproduction<br>
+M Stokes MD Fairchild RS Berns, ACM Transactions on graphics, v11 n4 1992<p>
+
+The colorimetry of self luminous displays - a bibliography<br>
+CIE Publication n.87, Central Bureau of the CIE, Vienna 1990<p>
+
+The Reproduction of Color in PhotoGraphy, Printing and Television<br>
+R.  W. G. Hunt, Fountain Press, Tolworth, England, 1987<p>
+
+Fully Utilizing Photo CD Images, Article No. 4, PhotoYCC Color Encoding and
+Compression Schemes<br>
+Eastman Kodak Company, Rochester NY (USA) (1993).<p>
+
+Digital halftoning<br>
+Robert Ulichney, MIT Press, 1987, ISBN 0-262-21009-6
+<p>
+
+<p><br><br><br><p>
+
+<center>
+<h1>WWW Browser colours</h1>
+Written by <a href="../">Paul Bourke</a><br>
+September 1996
+</center>
+
+<p><hr><p>
+
+<p align="justify">
+Achieving consistent colour representation within WWW documents between
+browsers (NetScape, MSIE) and hardware platforms (Macintosh, Windows, UNIX)
+requires some knowledge of how browsers allocate colours when running
+in 8 bit mode (256 colours). If 16, 24 or higher colour modes are being
+used then exact colour representation is achieved without dithering and
+the following doesn't apply.
+</p>
+
+<p align="justify">
+Colour in HTML is represented by 3 hexadecimal (hex) pairs, representing the
+red, green, blue components of the final colour. Each RGB component is
+stored as 1 byte (unsigned) ranging numerically from 0 to 255, in hex
+this is "00" to "ff". The colour model is the familiar colour cube used
+in computer graphics.
+</p>
+
+<center>
+<img src="browser1.gif"><p>
+</center>
+
+<p align="justify">
+Any colour can be requested by a WWW page but the browser will not necessarily
+use that colour precisely due to hardware limitations. Even if the hardware
+is capable of 24 bit colour, the actual RGB components are often rounded to 
+multiples of 4, fortunately this is not discernable by humans even if it
+could be resolved by the monitor. In index colour system such as the most
+common 256 colour system, the actual colours that can be displayed are
+quantised into much coarser steps. The operating system generally needs
+some colours for its own use such as drawing window boundaries, menus, etc.
+Browsers on Macintosh and MSWindows systems use 216 of the available 256
+colours, the remaining 40 are left available for the operating system
+to allocate as necessary.
+If colours are used that are not in the palette of 256 colours the
+browser will either convert the colour to one that is closest in the
+palette or it will give the bext representation of the requested
+colour by dithering a number of the available colours.
+If these colours are being used for backgrounds and/or
+text it can often mean the difference between a readable and unreadable
+page.
+</p>
+
+<table width=100%><tr><td>
+<p align="justify">
+Consider the rectangle on the right.
+It is created using a colour that is in the standard 216 palette used
+by browsers (NetScape and MSIE).
+</p>
+</td><td>
+<table width=50 height=50><tr><td bgcolor="#66CC33">&nbsp;</td></tr></table>
+</td></tr><tr><td>
+<p align="justify">
+The rectangle on the right however uses a colour not in the standard palette.
+It will either look like a solid colour if you have a 16 or 24 bit colour
+system or dithered if you have a 256 indexed colour system.
+</p>
+</td><td>
+<table width=50 height=50><tr><td bgcolor="#77dd55">&nbsp;</td></tr></table>
+</td></tr></table>
+<p align="justify">
+The set of colours which, if used, will look the same on all 256 palette
+systems is simply a 6x6x6 (216) partitioning of the colour cube.
+The discrete steps in each RGB component are
+</p>
+<center>
+<table width=50%><tr><td>000</td><td>051</td><td>102</td><td>153</td><td>204</td><td>255</td></tr></table>
+</center><p>
+or in hex<br>
+<center>
+<table width=50%><tr><td>00</td><td>33</td><td>66</td><td>99</td><td>cc</td><td>ff</td></tr></table>
+</center><p>
+or as percentages<br>
+<center>
+<table width=50%><tr><td>000%</td><td>020%</td><td>040%</td><td>060%</td><td>080%</td><td>100%</td></tr></table>
+</center>
+
+<p align="justify">
+This doesn't include any grey scale levels (where r = g = b) but fortunately
+the 40 system wide colours usually include a good range of grey values.
+</p>
+
+<html>
+<head><link rel=StyleSheet href="../../pdbstyle.css" type="text/css" media=all>
+
+<title>Colour table - red</title>
+</head>
+<body bgcolor="#ffffff">
+
+<center><table width=95% border=1>
+<tr>
+<td align=center bgcolor="000000"><b>
+<font color="#ffffff">
+00 00 00
+</b></font></td>
+<td align=center bgcolor="000033"><b>
+<font color="#ffffff">
+00 00 33
+</b></font></td>
+<td align=center bgcolor="000066"><b>
+<font color="#ffffff">
+00 00 66
+</b></font></td>
+<td align=center bgcolor="000099"><b>
+<font color="#ffffff">
+00 00 99
+</b></font></td>
+<td align=center bgcolor="0000cc"><b>
+<font color="#ffffff">
+00 00 CC
+</b></font></td>
+<td align=center bgcolor="0000ff"><b>
+<font color="#000000">
+00 00 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="003300"><b>
+<font color="#ffffff">
+00 33 00
+</b></font></td>
+<td align=center bgcolor="003333"><b>
+<font color="#ffffff">
+00 33 33
+</b></font></td>
+<td align=center bgcolor="003366"><b>
+<font color="#ffffff">
+00 33 66
+</b></font></td>
+<td align=center bgcolor="003399"><b>
+<font color="#ffffff">
+00 33 99
+</b></font></td>
+<td align=center bgcolor="0033cc"><b>
+<font color="#ffffff">
+00 33 CC
+</b></font></td>
+<td align=center bgcolor="0033ff"><b>
+<font color="#000000">
+00 33 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="006600"><b>
+<font color="#ffffff">
+00 66 00
+</b></font></td>
+<td align=center bgcolor="006633"><b>
+<font color="#ffffff">
+00 66 33
+</b></font></td>
+<td align=center bgcolor="006666"><b>
+<font color="#ffffff">
+00 66 66
+</b></font></td>
+<td align=center bgcolor="006699"><b>
+<font color="#ffffff">
+00 66 99
+</b></font></td>
+<td align=center bgcolor="0066cc"><b>
+<font color="#000000">
+00 66 CC
+</b></font></td>
+<td align=center bgcolor="0066ff"><b>
+<font color="#000000">
+00 66 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="009900"><b>
+<font color="#ffffff">
+00 99 00
+</b></font></td>
+<td align=center bgcolor="009933"><b>
+<font color="#ffffff">
+00 99 33
+</b></font></td>
+<td align=center bgcolor="009966"><b>
+<font color="#ffffff">
+00 99 66
+</b></font></td>
+<td align=center bgcolor="009999"><b>
+<font color="#ffffff">
+00 99 99
+</b></font></td>
+<td align=center bgcolor="0099cc"><b>
+<font color="#000000">
+00 99 CC
+</b></font></td>
+<td align=center bgcolor="0099ff"><b>
+<font color="#000000">
+00 99 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="00cc00"><b>
+<font color="#ffffff">
+00 CC 00
+</b></font></td>
+<td align=center bgcolor="00cc33"><b>
+<font color="#ffffff">
+00 CC 33
+</b></font></td>
+<td align=center bgcolor="00cc66"><b>
+<font color="#000000">
+00 CC 66
+</b></font></td>
+<td align=center bgcolor="00cc99"><b>
+<font color="#000000">
+00 CC 99
+</b></font></td>
+<td align=center bgcolor="00cccc"><b>
+<font color="#000000">
+00 CC CC
+</b></font></td>
+<td align=center bgcolor="00ccff"><b>
+<font color="#000000">
+00 CC FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="00ff00"><b>
+<font color="#000000">
+00 FF 00
+</b></font></td>
+<td align=center bgcolor="00ff33"><b>
+<font color="#000000">
+00 FF 33
+</b></font></td>
+<td align=center bgcolor="00ff66"><b>
+<font color="#000000">
+00 FF 66
+</b></font></td>
+<td align=center bgcolor="00ff99"><b>
+<font color="#000000">
+00 FF 99
+</b></font></td>
+<td align=center bgcolor="00ffcc"><b>
+<font color="#000000">
+00 FF CC
+</b></font></td>
+<td align=center bgcolor="00ffff"><b>
+<font color="#000000">
+00 FF FF
+</b></font></td>
+</tr>
+</table><p><center><table width=95% border=1>
+<tr>
+<td align=center bgcolor="330000"><b>
+<font color="#ffffff">
+33 00 00
+</b></font></td>
+<td align=center bgcolor="330033"><b>
+<font color="#ffffff">
+33 00 33
+</b></font></td>
+<td align=center bgcolor="330066"><b>
+<font color="#ffffff">
+33 00 66
+</b></font></td>
+<td align=center bgcolor="330099"><b>
+<font color="#ffffff">
+33 00 99
+</b></font></td>
+<td align=center bgcolor="3300cc"><b>
+<font color="#ffffff">
+33 00 CC
+</b></font></td>
+<td align=center bgcolor="3300ff"><b>
+<font color="#000000">
+33 00 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="333300"><b>
+<font color="#ffffff">
+33 33 00
+</b></font></td>
+<td align=center bgcolor="333333"><b>
+<font color="#ffffff">
+33 33 33
+</b></font></td>
+<td align=center bgcolor="333366"><b>
+<font color="#ffffff">
+33 33 66
+</b></font></td>
+<td align=center bgcolor="333399"><b>
+<font color="#ffffff">
+33 33 99
+</b></font></td>
+<td align=center bgcolor="3333cc"><b>
+<font color="#ffffff">
+33 33 CC
+</b></font></td>
+<td align=center bgcolor="3333ff"><b>
+<font color="#000000">
+33 33 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="336600"><b>
+<font color="#ffffff">
+33 66 00
+</b></font></td>
+<td align=center bgcolor="336633"><b>
+<font color="#ffffff">
+33 66 33
+</b></font></td>
+<td align=center bgcolor="336666"><b>
+<font color="#ffffff">
+33 66 66
+</b></font></td>
+<td align=center bgcolor="336699"><b>
+<font color="#ffffff">
+33 66 99
+</b></font></td>
+<td align=center bgcolor="3366cc"><b>
+<font color="#000000">
+33 66 CC
+</b></font></td>
+<td align=center bgcolor="3366ff"><b>
+<font color="#000000">
+33 66 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="339900"><b>
+<font color="#ffffff">
+33 99 00
+</b></font></td>
+<td align=center bgcolor="339933"><b>
+<font color="#ffffff">
+33 99 33
+</b></font></td>
+<td align=center bgcolor="339966"><b>
+<font color="#ffffff">
+33 99 66
+</b></font></td>
+<td align=center bgcolor="339999"><b>
+<font color="#ffffff">
+33 99 99
+</b></font></td>
+<td align=center bgcolor="3399cc"><b>
+<font color="#000000">
+33 99 CC
+</b></font></td>
+<td align=center bgcolor="3399ff"><b>
+<font color="#000000">
+33 99 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="33cc00"><b>
+<font color="#ffffff">
+33 CC 00
+</b></font></td>
+<td align=center bgcolor="33cc33"><b>
+<font color="#ffffff">
+33 CC 33
+</b></font></td>
+<td align=center bgcolor="33cc66"><b>
+<font color="#000000">
+33 CC 66
+</b></font></td>
+<td align=center bgcolor="33cc99"><b>
+<font color="#000000">
+33 CC 99
+</b></font></td>
+<td align=center bgcolor="33cccc"><b>
+<font color="#000000">
+33 CC CC
+</b></font></td>
+<td align=center bgcolor="33ccff"><b>
+<font color="#000000">
+33 CC FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="33ff00"><b>
+<font color="#000000">
+33 FF 00
+</b></font></td>
+<td align=center bgcolor="33ff33"><b>
+<font color="#000000">
+33 FF 33
+</b></font></td>
+<td align=center bgcolor="33ff66"><b>
+<font color="#000000">
+33 FF 66
+</b></font></td>
+<td align=center bgcolor="33ff99"><b>
+<font color="#000000">
+33 FF 99
+</b></font></td>
+<td align=center bgcolor="33ffcc"><b>
+<font color="#000000">
+33 FF CC
+</b></font></td>
+<td align=center bgcolor="33ffff"><b>
+<font color="#000000">
+33 FF FF
+</b></font></td>
+</tr>
+</table><p><center><table width=95% border=1>
+<tr>
+<td align=center bgcolor="660000"><b>
+<font color="#ffffff">
+66 00 00
+</b></font></td>
+<td align=center bgcolor="660033"><b>
+<font color="#ffffff">
+66 00 33
+</b></font></td>
+<td align=center bgcolor="660066"><b>
+<font color="#ffffff">
+66 00 66
+</b></font></td>
+<td align=center bgcolor="660099"><b>
+<font color="#ffffff">
+66 00 99
+</b></font></td>
+<td align=center bgcolor="6600cc"><b>
+<font color="#000000">
+66 00 CC
+</b></font></td>
+<td align=center bgcolor="6600ff"><b>
+<font color="#000000">
+66 00 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="663300"><b>
+<font color="#ffffff">
+66 33 00
+</b></font></td>
+<td align=center bgcolor="663333"><b>
+<font color="#ffffff">
+66 33 33
+</b></font></td>
+<td align=center bgcolor="663366"><b>
+<font color="#ffffff">
+66 33 66
+</b></font></td>
+<td align=center bgcolor="663399"><b>
+<font color="#ffffff">
+66 33 99
+</b></font></td>
+<td align=center bgcolor="6633cc"><b>
+<font color="#000000">
+66 33 CC
+</b></font></td>
+<td align=center bgcolor="6633ff"><b>
+<font color="#000000">
+66 33 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="666600"><b>
+<font color="#ffffff">
+66 66 00
+</b></font></td>
+<td align=center bgcolor="666633"><b>
+<font color="#ffffff">
+66 66 33
+</b></font></td>
+<td align=center bgcolor="666666"><b>
+<font color="#ffffff">
+66 66 66
+</b></font></td>
+<td align=center bgcolor="666699"><b>
+<font color="#ffffff">
+66 66 99
+</b></font></td>
+<td align=center bgcolor="6666cc"><b>
+<font color="#000000">
+66 66 CC
+</b></font></td>
+<td align=center bgcolor="6666ff"><b>
+<font color="#000000">
+66 66 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="669900"><b>
+<font color="#ffffff">
+66 99 00
+</b></font></td>
+<td align=center bgcolor="669933"><b>
+<font color="#ffffff">
+66 99 33
+</b></font></td>
+<td align=center bgcolor="669966"><b>
+<font color="#ffffff">
+66 99 66
+</b></font></td>
+<td align=center bgcolor="669999"><b>
+<font color="#000000">
+66 99 99
+</b></font></td>
+<td align=center bgcolor="6699cc"><b>
+<font color="#000000">
+66 99 CC
+</b></font></td>
+<td align=center bgcolor="6699ff"><b>
+<font color="#000000">
+66 99 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="66cc00"><b>
+<font color="#000000">
+66 CC 00
+</b></font></td>
+<td align=center bgcolor="66cc33"><b>
+<font color="#000000">
+66 CC 33
+</b></font></td>
+<td align=center bgcolor="66cc66"><b>
+<font color="#000000">
+66 CC 66
+</b></font></td>
+<td align=center bgcolor="66cc99"><b>
+<font color="#000000">
+66 CC 99
+</b></font></td>
+<td align=center bgcolor="66cccc"><b>
+<font color="#000000">
+66 CC CC
+</b></font></td>
+<td align=center bgcolor="66ccff"><b>
+<font color="#000000">
+66 CC FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="66ff00"><b>
+<font color="#000000">
+66 FF 00
+</b></font></td>
+<td align=center bgcolor="66ff33"><b>
+<font color="#000000">
+66 FF 33
+</b></font></td>
+<td align=center bgcolor="66ff66"><b>
+<font color="#000000">
+66 FF 66
+</b></font></td>
+<td align=center bgcolor="66ff99"><b>
+<font color="#000000">
+66 FF 99
+</b></font></td>
+<td align=center bgcolor="66ffcc"><b>
+<font color="#000000">
+66 FF CC
+</b></font></td>
+<td align=center bgcolor="66ffff"><b>
+<font color="#000000">
+66 FF FF
+</b></font></td>
+</tr>
+</table><p><center><table width=95% border=1>
+<tr>
+<td align=center bgcolor="990000"><b>
+<font color="#ffffff">
+99 00 00
+</b></font></td>
+<td align=center bgcolor="990033"><b>
+<font color="#ffffff">
+99 00 33
+</b></font></td>
+<td align=center bgcolor="990066"><b>
+<font color="#ffffff">
+99 00 66
+</b></font></td>
+<td align=center bgcolor="990099"><b>
+<font color="#ffffff">
+99 00 99
+</b></font></td>
+<td align=center bgcolor="9900cc"><b>
+<font color="#000000">
+99 00 CC
+</b></font></td>
+<td align=center bgcolor="9900ff"><b>
+<font color="#000000">
+99 00 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="993300"><b>
+<font color="#ffffff">
+99 33 00
+</b></font></td>
+<td align=center bgcolor="993333"><b>
+<font color="#ffffff">
+99 33 33
+</b></font></td>
+<td align=center bgcolor="993366"><b>
+<font color="#ffffff">
+99 33 66
+</b></font></td>
+<td align=center bgcolor="993399"><b>
+<font color="#ffffff">
+99 33 99
+</b></font></td>
+<td align=center bgcolor="9933cc"><b>
+<font color="#000000">
+99 33 CC
+</b></font></td>
+<td align=center bgcolor="9933ff"><b>
+<font color="#000000">
+99 33 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="996600"><b>
+<font color="#ffffff">
+99 66 00
+</b></font></td>
+<td align=center bgcolor="996633"><b>
+<font color="#ffffff">
+99 66 33
+</b></font></td>
+<td align=center bgcolor="996666"><b>
+<font color="#ffffff">
+99 66 66
+</b></font></td>
+<td align=center bgcolor="996699"><b>
+<font color="#000000">
+99 66 99
+</b></font></td>
+<td align=center bgcolor="9966cc"><b>
+<font color="#000000">
+99 66 CC
+</b></font></td>
+<td align=center bgcolor="9966ff"><b>
+<font color="#000000">
+99 66 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="999900"><b>
+<font color="#ffffff">
+99 99 00
+</b></font></td>
+<td align=center bgcolor="999933"><b>
+<font color="#ffffff">
+99 99 33
+</b></font></td>
+<td align=center bgcolor="999966"><b>
+<font color="#000000">
+99 99 66
+</b></font></td>
+<td align=center bgcolor="999999"><b>
+<font color="#000000">
+99 99 99
+</b></font></td>
+<td align=center bgcolor="9999cc"><b>
+<font color="#000000">
+99 99 CC
+</b></font></td>
+<td align=center bgcolor="9999ff"><b>
+<font color="#000000">
+99 99 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="99cc00"><b>
+<font color="#000000">
+99 CC 00
+</b></font></td>
+<td align=center bgcolor="99cc33"><b>
+<font color="#000000">
+99 CC 33
+</b></font></td>
+<td align=center bgcolor="99cc66"><b>
+<font color="#000000">
+99 CC 66
+</b></font></td>
+<td align=center bgcolor="99cc99"><b>
+<font color="#000000">
+99 CC 99
+</b></font></td>
+<td align=center bgcolor="99cccc"><b>
+<font color="#000000">
+99 CC CC
+</b></font></td>
+<td align=center bgcolor="99ccff"><b>
+<font color="#000000">
+99 CC FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="99ff00"><b>
+<font color="#000000">
+99 FF 00
+</b></font></td>
+<td align=center bgcolor="99ff33"><b>
+<font color="#000000">
+99 FF 33
+</b></font></td>
+<td align=center bgcolor="99ff66"><b>
+<font color="#000000">
+99 FF 66
+</b></font></td>
+<td align=center bgcolor="99ff99"><b>
+<font color="#000000">
+99 FF 99
+</b></font></td>
+<td align=center bgcolor="99ffcc"><b>
+<font color="#000000">
+99 FF CC
+</b></font></td>
+<td align=center bgcolor="99ffff"><b>
+<font color="#000000">
+99 FF FF
+</b></font></td>
+</tr>
+</table><p><center><table width=95% border=1>
+<tr>
+<td align=center bgcolor="cc0000"><b>
+<font color="#ffffff">
+CC 00 00
+</b></font></td>
+<td align=center bgcolor="cc0033"><b>
+<font color="#ffffff">
+CC 00 33
+</b></font></td>
+<td align=center bgcolor="cc0066"><b>
+<font color="#000000">
+CC 00 66
+</b></font></td>
+<td align=center bgcolor="cc0099"><b>
+<font color="#000000">
+CC 00 99
+</b></font></td>
+<td align=center bgcolor="cc00cc"><b>
+<font color="#000000">
+CC 00 CC
+</b></font></td>
+<td align=center bgcolor="cc00ff"><b>
+<font color="#000000">
+CC 00 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="cc3300"><b>
+<font color="#ffffff">
+CC 33 00
+</b></font></td>
+<td align=center bgcolor="cc3333"><b>
+<font color="#ffffff">
+CC 33 33
+</b></font></td>
+<td align=center bgcolor="cc3366"><b>
+<font color="#000000">
+CC 33 66
+</b></font></td>
+<td align=center bgcolor="cc3399"><b>
+<font color="#000000">
+CC 33 99
+</b></font></td>
+<td align=center bgcolor="cc33cc"><b>
+<font color="#000000">
+CC 33 CC
+</b></font></td>
+<td align=center bgcolor="cc33ff"><b>
+<font color="#000000">
+CC 33 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="cc6600"><b>
+<font color="#000000">
+CC 66 00
+</b></font></td>
+<td align=center bgcolor="cc6633"><b>
+<font color="#000000">
+CC 66 33
+</b></font></td>
+<td align=center bgcolor="cc6666"><b>
+<font color="#000000">
+CC 66 66
+</b></font></td>
+<td align=center bgcolor="cc6699"><b>
+<font color="#000000">
+CC 66 99
+</b></font></td>
+<td align=center bgcolor="cc66cc"><b>
+<font color="#000000">
+CC 66 CC
+</b></font></td>
+<td align=center bgcolor="cc66ff"><b>
+<font color="#000000">
+CC 66 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="cc9900"><b>
+<font color="#000000">
+CC 99 00
+</b></font></td>
+<td align=center bgcolor="cc9933"><b>
+<font color="#000000">
+CC 99 33
+</b></font></td>
+<td align=center bgcolor="cc9966"><b>
+<font color="#000000">
+CC 99 66
+</b></font></td>
+<td align=center bgcolor="cc9999"><b>
+<font color="#000000">
+CC 99 99
+</b></font></td>
+<td align=center bgcolor="cc99cc"><b>
+<font color="#000000">
+CC 99 CC
+</b></font></td>
+<td align=center bgcolor="cc99ff"><b>
+<font color="#000000">
+CC 99 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="cccc00"><b>
+<font color="#000000">
+CC CC 00
+</b></font></td>
+<td align=center bgcolor="cccc33"><b>
+<font color="#000000">
+CC CC 33
+</b></font></td>
+<td align=center bgcolor="cccc66"><b>
+<font color="#000000">
+CC CC 66
+</b></font></td>
+<td align=center bgcolor="cccc99"><b>
+<font color="#000000">
+CC CC 99
+</b></font></td>
+<td align=center bgcolor="cccccc"><b>
+<font color="#000000">
+CC CC CC
+</b></font></td>
+<td align=center bgcolor="ccccff"><b>
+<font color="#000000">
+CC CC FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="ccff00"><b>
+<font color="#000000">
+CC FF 00
+</b></font></td>
+<td align=center bgcolor="ccff33"><b>
+<font color="#000000">
+CC FF 33
+</b></font></td>
+<td align=center bgcolor="ccff66"><b>
+<font color="#000000">
+CC FF 66
+</b></font></td>
+<td align=center bgcolor="ccff99"><b>
+<font color="#000000">
+CC FF 99
+</b></font></td>
+<td align=center bgcolor="ccffcc"><b>
+<font color="#000000">
+CC FF CC
+</b></font></td>
+<td align=center bgcolor="ccffff"><b>
+<font color="#000000">
+CC FF FF
+</b></font></td>
+</tr>
+</table><p><center><table width=95% border=1>
+<tr>
+<td align=center bgcolor="ff0000"><b>
+<font color="#000000">
+FF 00 00
+</b></font></td>
+<td align=center bgcolor="ff0033"><b>
+<font color="#000000">
+FF 00 33
+</b></font></td>
+<td align=center bgcolor="ff0066"><b>
+<font color="#000000">
+FF 00 66
+</b></font></td>
+<td align=center bgcolor="ff0099"><b>
+<font color="#000000">
+FF 00 99
+</b></font></td>
+<td align=center bgcolor="ff00cc"><b>
+<font color="#000000">
+FF 00 CC
+</b></font></td>
+<td align=center bgcolor="ff00ff"><b>
+<font color="#000000">
+FF 00 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="ff3300"><b>
+<font color="#000000">
+FF 33 00
+</b></font></td>
+<td align=center bgcolor="ff3333"><b>
+<font color="#000000">
+FF 33 33
+</b></font></td>
+<td align=center bgcolor="ff3366"><b>
+<font color="#000000">
+FF 33 66
+</b></font></td>
+<td align=center bgcolor="ff3399"><b>
+<font color="#000000">
+FF 33 99
+</b></font></td>
+<td align=center bgcolor="ff33cc"><b>
+<font color="#000000">
+FF 33 CC
+</b></font></td>
+<td align=center bgcolor="ff33ff"><b>
+<font color="#000000">
+FF 33 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="ff6600"><b>
+<font color="#000000">
+FF 66 00
+</b></font></td>
+<td align=center bgcolor="ff6633"><b>
+<font color="#000000">
+FF 66 33
+</b></font></td>
+<td align=center bgcolor="ff6666"><b>
+<font color="#000000">
+FF 66 66
+</b></font></td>
+<td align=center bgcolor="ff6699"><b>
+<font color="#000000">
+FF 66 99
+</b></font></td>
+<td align=center bgcolor="ff66cc"><b>
+<font color="#000000">
+FF 66 CC
+</b></font></td>
+<td align=center bgcolor="ff66ff"><b>
+<font color="#000000">
+FF 66 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="ff9900"><b>
+<font color="#000000">
+FF 99 00
+</b></font></td>
+<td align=center bgcolor="ff9933"><b>
+<font color="#000000">
+FF 99 33
+</b></font></td>
+<td align=center bgcolor="ff9966"><b>
+<font color="#000000">
+FF 99 66
+</b></font></td>
+<td align=center bgcolor="ff9999"><b>
+<font color="#000000">
+FF 99 99
+</b></font></td>
+<td align=center bgcolor="ff99cc"><b>
+<font color="#000000">
+FF 99 CC
+</b></font></td>
+<td align=center bgcolor="ff99ff"><b>
+<font color="#000000">
+FF 99 FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="ffcc00"><b>
+<font color="#000000">
+FF CC 00
+</b></font></td>
+<td align=center bgcolor="ffcc33"><b>
+<font color="#000000">
+FF CC 33
+</b></font></td>
+<td align=center bgcolor="ffcc66"><b>
+<font color="#000000">
+FF CC 66
+</b></font></td>
+<td align=center bgcolor="ffcc99"><b>
+<font color="#000000">
+FF CC 99
+</b></font></td>
+<td align=center bgcolor="ffcccc"><b>
+<font color="#000000">
+FF CC CC
+</b></font></td>
+<td align=center bgcolor="ffccff"><b>
+<font color="#000000">
+FF CC FF
+</b></font></td>
+</tr>
+<tr>
+<td align=center bgcolor="ffff00"><b>
+<font color="#000000">
+FF FF 00
+</b></font></td>
+<td align=center bgcolor="ffff33"><b>
+<font color="#000000">
+FF FF 33
+</b></font></td>
+<td align=center bgcolor="ffff66"><b>
+<font color="#000000">
+FF FF 66
+</b></font></td>
+<td align=center bgcolor="ffff99"><b>
+<font color="#000000">
+FF FF 99
+</b></font></td>
+<td align=center bgcolor="ffffcc"><b>
+<font color="#000000">
+FF FF CC
+</b></font></td>
+<td align=center bgcolor="ffffff"><b>
+<font color="#000000">
+FF FF FF
+</b></font></td>
+</tr>
+</table><p>
+
+</center></center></center></center></center></center></center></center>
+<p align="justify">
+The above table was generated by slicing along the red axis of the
+colour cube, that is, each table above is a sampled plane parallel
+to the green-blue plane. Slices could be generated along the other
+two axes as well.
+</p>
+
+<p align="justify">
+Laid out as a PhotoShop table, the 256 colour palette for the Macintosh
+is shown on the left and the 216 palette for MS based
+machines is shown on the right.
+</p>
+
+<center>
+<table><tr><td>
+<img src="mac.gif">
+</td><td>
+<img src="win.gif">
+</td></tr></table>
+</center>
+
+<p>
+All three slices can be viewed below<p>
+<center>
+<b>
+<a href="colours_r.html">Red</a> -- 
+<a href="colours_g.html">Green</a> --
+<a href="colours_b.html">Blue</a>
+</b>
+</center>
+
+<p align="justify">
+<b>Note:</b> The above refers to what colours should be used when
+creating simple colour diagrams, for example, backgrounds, logos, etc.
+For photographic or other images with more than 256 colours it is better
+to use an adaptive colour table when creating the gif rather than
+dithering to the browser palette.
+</p>
+
+<a href="browser_r.c">C code</a> to create colour table.
+<p>
+
+</body>
+</html>
+

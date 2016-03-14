@@ -1,0 +1,19 @@
+Black #000000
+Navy #000080
+Green #008000
+Teal #008080
+Maroon #800000
+Purple #800080
+Olive #808000
+Silver #C0C0C0
+Gray #808080
+Blue #0000FF
+Lime #00FF00
+Aqua #00FFFF
+Red #FF0000
+Fuchsia #FF00FF
+Yellow #FFFF00
+White #FFFFFF
+
+New in CSS 2.1:
+Orange #FFA500

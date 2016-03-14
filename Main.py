@@ -10,7 +10,8 @@ Introduction (THH)
     I discovered this in the Python distribution (under the name 
     Pynche) and decided that there were numerous improvements I could
     make.  I gave it a self-contained palette, so it does not rely on
-    external palettes, and can do a best-of all in the colour list. 
+    external palettes, and can do a best-of all in the colour list
+    (but it does look for certain external palettes to incorporate). 
     I improved said colour list giving it an improved interface, a 
     place in the main GUI and different sorting methods.
     
@@ -386,7 +387,7 @@ Colour Name Databases
 
 
 
-__version__ = '1.1 alpha4'
+__version__ = '1.2 alpha2'
 
 __doc__=__doc__%globals()
 import sys

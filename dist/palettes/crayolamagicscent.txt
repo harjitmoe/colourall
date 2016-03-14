@@ -1,0 +1,31 @@
+#Approximate Hex-To-Name of colours chosen by Cray+ola for their "magic scent" crayons
+#FEFEFA	Baby Powder
+#FFD12A	Banana
+#4F86F7	Blueberry
+#FFD3F8	Bubble Gum
+#C95A49	Cedar Chest
+#DA2647	Cherry
+#BD8260	Chocolate
+#FEFEFE	Coconut
+#FFFF31	Daffodil
+#9B7653	Dirt
+#44D7A8	Eucalyptus
+#A6E7FF	Fresh Air
+#6F2DA8	Grape
+#DA614E	Jelly Bean
+#253529	Leather Jacket
+#FFFF38	Lemon
+#1A1110	Licorice
+#DB91EF	Lilac
+#B2F302	Lime
+#FFE4CD	Lumber
+#214FC6	New Car
+#FF8866	Orange
+#FFD0B9	Peach
+#45A27D	Pine
+#FF5050	Rose
+#FFCFF1	Shampoo
+#738276	Smoke
+#CEC8EF	Soap
+#FC5A8D	Strawberry
+#FF878D	Tulip

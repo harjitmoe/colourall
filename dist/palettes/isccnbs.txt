@@ -1,4 +1,4 @@
-#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online version) Copyright (c) 2004-2005 Voluntocracy. Permission is granted to copy and distribute modified or unmodified versions of this color dictionary provided the copyright notice and this permission notice are preserved on all copies and the entire such work is distributed under the terms of a permission notice identical to this one. X11-style
+#ISCC-NBS Dictionary of Colo(u)r Names (1955) (Retsof online version) Copyright (c) 2004-2005 Voluntocracy. Permission is granted to copy and distribute modified or unmodified versions of this color dictionary provided the copyright notice and this permission notice are preserved on all copies and the entire such work is distributed under the terms of a permission notice identical to this one. X11-style format.
  96  78 151		abbey
  96  78 151		Abbey
 138 154  91		absinthe

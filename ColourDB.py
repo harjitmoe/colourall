@@ -69,7 +69,6 @@ class ColourDB:
             # version the `name', or the CapitalizedVersion, etc.
             key = (red, green, blue)
             foundname, aliases = self.__byrgb.get(key, (name, []))
-            if foundname.lower()=="bayleaf": print name, foundname, aliases, key
             if foundname != name and foundname not in aliases:
                 aliases.append(foundname)
             self.__byrgb[key] = (name, aliases)
@@ -186,8 +185,8 @@ class ColourDB:
                         #import math
                         #v1=math.hypot(u1,_v1)
                         #v2=math.hypot(u2,_v2)
-                        v1=(max(r1,l1)-min(r1,l1))+(max(g1,l1)-min(g1,l1))+(max(b1,l1)-min(b1,l1))
-                        v2=(max(r2,l2)-min(r2,l2))+(max(g2,l2)-min(g2,l2))+(max(b2,l2)-min(b2,l2))
+                        v1=abs(r1-l1)+abs(g1-l1)+abs(b1-l1)
+                        v2=abs(r2-l2)+abs(g2-l2)+abs(b2-l2)
                         o1,o2=-l1,-l2
                     else:
                         v1,v2=l1,l2
@@ -211,24 +210,27 @@ class ColourDB:
             raise BadColour((red, green, blue))
         return [name] + aliases
 
-
 def cmp_to_key(cmper):
-    print "CMPer to KEYer"
+    # From functools module in Python 2.7 Standard Library - PSF licence, 2011
+    #print "CMPer to KEYer"
     class keyer(object):
-        def __init__(self, o, *args):
-            self.o = o
+        __slots__ = ['obj']
+        def __init__(self, obj, *args):
+            self.obj = obj
         def __lt__(a, b):
-            return cmper(a.o, b.o) < 0
+            return cmper(a.obj, b.obj) < 0
         def __gt__(a, b):
-            return cmper(a.o, b.o) > 0
+            return cmper(a.obj, b.obj) > 0
         def __eq__(a, b):
-            return cmper(a.o, b.o) == 0
+            return cmper(a.obj, b.obj) == 0
         def __le__(a, b):
-            return cmper(a.o, b.o) <= 0
+            return cmper(a.obj, b.obj) <= 0
         def __ge__(a, b):
-            return cmper(a.o, b.o) >= 0
+            return cmper(a.obj, b.obj) >= 0
         def __ne__(a, b):
-            return cmper(a.o, b.o) != 0
+            return cmper(a.obj, b.obj) != 0
+        def __hash__(self):
+            raise TypeError('hash not implemented')
     return keyer
 
 class RGBToNameColourDB(ColourDB):
@@ -261,21 +263,8 @@ class NamelessHexDB(ColourDB):
 
 
 
-# format is a tuple (RE, CLASS) where RE is a compiled regular
-# expression and CLASS is the class to instantiate if a match is found
-
-FILETYPES = [
-    (re.compile('Xorg'),                             RGBToNameColourDB),
-    (re.compile('XConsortium'),                      RGBToNameColourDB),
-    (re.compile('X11[- ]?[sS]tyle'),                 RGBToNameColourDB),
-    (re.compile('HTML'),                             NameToHexDB),
-    (re.compile('lightlink'),                        NameToHexDB),
-    (re.compile('[nN]ame[- ]?[tT]o[- ]?[hH]ex'),     NameToHexDB),
-    (re.compile('[hH]ex[- ]?[tT]o[- ]?[nN]ame'),     HexToNameDB),
-    (re.compile('Websafe'),                          NamelessHexDB),
-    (re.compile('[hH]ex[- ]?[vV]alues[- ]?[oO]nly'), NamelessHexDB),
-    (re.compile('[cC]rayola'),                       CrayolaDB),
-    ]
+# Note: Crayola first!
+FILETYPES = [CrayolaDB,RGBToNameColourDB,HexToNameDB,NameToHexDB,NamelessHexDB]
 
 def get_colourdb(file, filetype=None):
     fp = open(file)
@@ -288,18 +277,28 @@ def get_colourdb_string(name, file, filetype=None):
     return _get_colourdb(fp, filetype)
 
 def _get_colourdb(fp, filetype):
+    initpos = fp.tell()
     colourdb = None
     try:
         line = fp.readline()
+        while (line and not line.strip()) or (line[:1] in ("#","!")): #Note: might be empty string so (in "#!") does not cut it
+            line = fp.readline()
         if not line:
-            return None
+            #If it's hex-to-name format, # may be at the beginning of data lines.
+            fp.seek(initpos)
+            line = fp.readline()
+            while (line and not line.strip()) or (line[:1]=="!"):
+                line = fp.readline()
+            if not line:
+                return None
         # try to determine the type of RGB file it is
         if filetype is None:
             filetypes = FILETYPES
         else:
             filetypes = [filetype]
-        for typere, class_ in filetypes:
-            mo = typere.search(line)
+        for class_ in filetypes:
+            typere = class_._re
+            mo = typere.match(line)
             if mo:
                 break
         else:

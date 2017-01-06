@@ -4,6 +4,6 @@
 Run this file under Unix or when debugging under Windows.
 """
 import Main
-print dir()
-print sorted(__builtins__.__dict__.keys())
+#print dir()
+#print sorted(__builtins__.__dict__.keys())
 Main.main()

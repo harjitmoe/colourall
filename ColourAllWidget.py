@@ -274,10 +274,10 @@ def make_view_popups(switchboard, root, extrapath):
     for dir in dirs:
         if dir == '':
             dir = '.'
-	#See also _py2exe_mf_imports() (below)
+        #See also _py2exe_mf_imports() (below)
         l=['ChipViewer.py', 'DetailsViewer.py', 'ListViewer.py', 'StripViewer.py', 'TextViewer.py',  'TypeinViewer.py', 'GotoViewer.py']
         if (not hasattr(sys,"frozen")) or (not sys.frozen):
-            print "Non-Applet"
+            #print "Non-Applet"
             l=os.listdir(dir)
         for file in l:
             if file[-9:] == 'Viewer.py':

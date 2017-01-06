@@ -1,4 +1,4 @@
-#X11-style
+! Original (pre-Paul Raveling / pre-John Thomas) rgb.txt
 112 219 147		aquamarine
 50 204 153		medium aquamarine
 50 204 153		MediumAquamarine

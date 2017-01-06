@@ -1,4 +1,4 @@
-#Approximate Hex-To-Name of colours chosen by Cray+ola for their "magic scent" crayons
+!Approximate colours chosen by Crayola for their "magic scent" crayons
 #FEFEFA	Baby Powder
 #FFD12A	Banana
 #4F86F7	Blueberry

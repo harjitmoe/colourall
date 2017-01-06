@@ -1,4 +1,4 @@
-#Hex-To-Name of the Cray+ola (not to trigger the format sniffer) "Silver Swirls" crayons
+!Crayola "Silver Swirls" crayons
 #C39953	Aztec Gold
 #A17A74	Burnished Brown
 #6D9BC3	Cerulean Frost

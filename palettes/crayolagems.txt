@@ -1,4 +1,4 @@
-#Hex-To-Name of Cray+ola (not to trigger the format sniffer) "Gem Tones" Crayons
+!Crayola "Gem Tones" Crayons
 #892EB0	Amethyst
 #A54E37	Citrine
 #389765	Emerald

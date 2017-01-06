@@ -1,4 +1,4 @@
-# De-facto NS & MSIE recognized HTML color names
+# De-facto NS & MSIE recognized HTML color names (the 140 colour names that Tim Peters and his sister say NS and MSIE both understand (with some controversy over AliceBlue).  Were standardised in CSS3 but this list has not been checked against CSS3, nor updated to CSS-Col4.
 AliceBlue   	 #f0f8ff
 AntiqueWhite   	 #faebd7
 Aqua    	 #00ffff

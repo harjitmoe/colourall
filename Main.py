@@ -310,76 +310,12 @@ Keyboard Accelerators
 Colour Name Databases
 ====================
 
-    The original Pynche used colour name database files to 
+    Colour name database files are used to 
     calculate the nearest colour to the selected colour, and to display 
-    in the Colour List view.  Several files were distributed with 
-    Pynche, files contributing to the bultin database are described 
-    below. You can still use such database files!
+    in the Colour List view.
 
-    html40colours.txt -- the HTML 4.0 guaranteed colour names.  Was 
-    guaranteed to contribute to the list.
-
-    webcolours.txt -- The 140 colour names that Tim Peters and his
-    sister say NS and MSIE both understand (with some controversy 
-    over AliceBlue). Was included.
-
-    rgb.txt -- the colour names from X11 (which is licensed as
-    below). Maroon was renamed to RichMaroon and Purple to Veronica(?) 
-    due to clashes with W3C. And the license I mentioned earlier is:
-
-     Copyright (C) 1994 X Consortium
-
-     Permission is hereby granted, free of charge, to any person obtaining a copy
-     of this software and associated documentation files (the "Software"), to
-     deal in the Software without restriction, including without limitation the
-     rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
-     sell copies of the Software, and to permit persons to whom the Software is
-     furnished to do so, subject to the following conditions:
-
-     The above copyright notice and this permission notice shall be included in
-     all copies or substantial portions of the Software.
-
-     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
-     X CONSORTIUM BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN
-     AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNEC-
-     TION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-     Except as contained in this notice, the name of the X Consortium shall not
-     be used in advertising or otherwise to promote the sale, use or other deal-
-     ings in this Software without prior written authorization from the X Consor-
-     tium.
-
-     X Window System is a trademark of X Consortium, Inc.
-    
-    Actually, nowadays
-
-     X Window System is a trademark of The Open Group
-
-    namedcolours.txt -- an alternative set of Netscape colours?
-    Contributed any colours not otherwise present.
-    Retrieved from http://www.lightlink.com/xine/bells/namedcolours.html
-    
-    Extra databases contributing to the builtin are detailed below:
-    
-    (Crayola Databases) -- colours used by Crayola to describe their 
-    crayons.  From Wikipedia, so under the Creative Commons Attribution
-    ShareAlike 3.0 Unported, and maybe additional terms at 
-    http://en.wikipedia.org/wiki/Terms_of_use . Content retrieved from 
-    http://en.wikipedia.org/wiki/List_of_Crayola_crayon_colours .
-    
-    Retsof Online Version of ISCC-NBS Dictionary of Colour Names --
-    "Copyright (c) 2004-2005 Voluntocracy. Permission is granted to copy 
-    and distribute modified or unmodified versions of this colour 
-    dictionary provided the copyright notice and this permission notice 
-    are preserved on all copies and the entire such work is distributed 
-    under the terms of a permission notice identical to this one."
-    (The notice "Website page design and content Copyright (c)2000-2006 
-    John C. Foster and Texas Precancel Club - All Rights Reserved. Awards 
-    images are the property of the respective award program owners and 
-    used with permission." was also present but seems not to apply
-    specifically to said table.)
+    While an initial database is used as an attempted merger of those
+    supplied, you may load them individually.
 
 """
 
@@ -387,7 +323,7 @@ Colour Name Databases
 
 
 
-__version__ = '1.2 alpha2'
+__version__ = '1.3'
 
 __doc__=__doc__%globals()
 import sys
